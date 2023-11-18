@@ -1,0 +1,24 @@
+.header {
+  padding: 0 1rem;
+}
+
+.nav {
+  padding: 1rem 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20%;
+
+  &__link {
+    text-decoration: none;
+    color: inherit;
+    padding: 0.5rem;
+    border-radius: 20px;
+    &:hover {
+      background-color: darkmagenta;
+    }
+    &--active {
+      background-color: lightcoral;
+    }
+  }
+}

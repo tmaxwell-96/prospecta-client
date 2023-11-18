@@ -1,3 +1,24 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 1.75rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+}
+
+h3 {
+  font-size: 0.8125rem;
+}
+
+p {
+  font-size: 0.8125rem;
+}
+
 .app {
   &__content {
     border: 1px dashed red;
