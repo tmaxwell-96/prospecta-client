@@ -19,6 +19,8 @@ const DealCard = ({ deal }) => {
       <div className="deal-card__content">
         <div className="deal-card__content-lower">
           <div className="deal-card__content-left">
+            <p className="deal-card__label">Company Name</p>
+            <p className="deal-card__text">{deal.company_name}</p>
             <p className="deal-card__label">Expected Value</p>
             <p className="deal-card__text">{`$${formatNumberWithCommas(
               deal.value
