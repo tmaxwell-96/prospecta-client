@@ -9,11 +9,23 @@ const DealsList = () => {
   const baseURL = "http://localhost:8080";
   const [dealList, setDealList] = useState([]);
   const [seachKeyword, setSearchKeyword] = useState("");
+  const [starDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
 
   //Search function
 
   const handleSearch = (event) => {
     setSearchKeyword(event.target.value);
+  };
+
+  const handleStartDate = (event) => {
+    console.log(event.target.value);
+    setStartDate(event.target.value);
+  };
+
+  const handleEndDate = (event) => {
+    console.log(event.target.value);
+    setEndDate(event.target.value);
   };
 
   useEffect(() => {
@@ -54,6 +66,12 @@ const DealsList = () => {
         type="text"
         placeholder="Search Company"
       />
+      <h3 className="company-list__header">Date Range</h3>
+      <p>From</p>
+
+      <input onBlur={handleStartDate} type="date" name="date" id="date" />
+      <p>To</p>
+      <input onBlur={handleEndDate} type="date" name="date" id="date" />
 
       <GraphicalInfo dealList={dealList} />
 

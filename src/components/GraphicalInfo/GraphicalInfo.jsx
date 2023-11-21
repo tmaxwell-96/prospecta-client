@@ -1,46 +1,61 @@
-// import { Chart } from "chart.js";
+import BarChart from "../BarChart/BarChart";
 import { formatNumberWithCommas, sumValues } from "../../functions/functions";
+import { useState } from "react";
 
 const GraphicalInfo = ({ dealList }) => {
+  //Graph State
+
   const dataPoints = dealList.map((deal) => ({
     x: deal.expected_sale_date,
     y: deal.value,
   }));
 
   function sumYValuesByMonth(dataArray) {
-    // Create an object to store the sum of y-values for each month
     const monthlySum = {};
 
-    // Iterate over the array and accumulate y-values
     dataArray.forEach((data) => {
       const date = new Date(data.x);
       const yearMonth = `${date.getFullYear()}-${(date.getMonth() + 1)
         .toString()
         .padStart(2, "0")}`;
 
-      // If the year-month key doesn't exist, create it with the current y-value
       if (!monthlySum[yearMonth]) {
         monthlySum[yearMonth] = data.y;
       } else {
-        // If the key already exists, add the current y-value to the existing sum
         monthlySum[yearMonth] += data.y;
       }
     });
 
-    console.log(monthlySum);
+    // Convert the object into an array of objects
+    const resultArray = Object.entries(monthlySum).map(([month, value]) => ({
+      month,
+      value,
+    }));
+
+    return resultArray;
   }
 
-  if (dataPoints.length) {
-    // console.log(dataPoints);
-    sumYValuesByMonth(dataPoints);
+  const actualData = sumYValuesByMonth(dataPoints);
+
+  if (actualData.month) {
+    console.log(actualData);
   }
+
+  const [graphData, setGraphData] = useState({
+    labels: actualData.map((data) => data.month),
+    datasets: [
+      {
+        label: "Value Per Month",
+        data: actualData.map((data) => data.value),
+      },
+    ],
+  });
 
   return (
     <section>
       <h2>Graph goes here</h2>
       {`Total Value: $${formatNumberWithCommas(sumValues(dealList))}`}
-      <canvas id="myChart"></canvas>
-      <canvas id="acquisitions"></canvas>
+      {/* <BarChart chartData={graphData} /> */}
     </section>
   );
 };
