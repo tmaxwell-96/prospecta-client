@@ -1,16 +1,10 @@
 import "./DealCard.scss";
 import edit from "../../assets/icons/edit-24px-white.svg";
+import { formatNumberWithCommas } from "../../functions/functions";
 
 const DealCard = ({ deal }) => {
   const percentage = deal.percent_certainty;
   const certaintyNumber = percentage.replace(/%/g, "");
-
-  const formatNumberWithCommas = (number) => {
-    let numberString = number.toString();
-    numberString = numberString.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
-    return numberString;
-  };
 
   return (
     <section className="deal-card">

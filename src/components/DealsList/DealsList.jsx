@@ -2,6 +2,7 @@ import "./DealsList.scss";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import DealCard from "../DealCard/DealCard";
+import GraphicalInfo from "../GraphicalInfo/GraphicalInfo";
 
 const DealsList = () => {
   // State
@@ -53,6 +54,9 @@ const DealsList = () => {
         type="text"
         placeholder="Search Company"
       />
+
+      <GraphicalInfo dealList={dealList} />
+
       <div className="company-list__container">
         {dealList.map((deal) => {
           return <DealCard key={deal.id} deal={deal} />;
