@@ -19,13 +19,23 @@ const DealsList = () => {
   };
 
   const handleStartDate = (event) => {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     setStartDate(event.target.value);
   };
 
   const handleEndDate = (event) => {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     setEndDate(event.target.value);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const dateRange = {
+      startDate: starDate,
+      endDate: endDate,
+    };
+    const response = await axios.post(`${baseURL}/search`, dateRange);
+    setDealList(response.data);
   };
 
   useEffect(() => {
@@ -66,12 +76,15 @@ const DealsList = () => {
         type="text"
         placeholder="Search Company"
       />
-      <h3 className="company-list__header">Date Range</h3>
-      <p>From</p>
+      <form action="">
+        <h3 className="company-list__header">Date Range</h3>
+        <p>From</p>
 
-      <input onBlur={handleStartDate} type="date" name="date" id="date" />
-      <p>To</p>
-      <input onBlur={handleEndDate} type="date" name="date" id="date" />
+        <input onBlur={handleStartDate} type="date" name="date" id="date" />
+        <p>To</p>
+        <input onBlur={handleEndDate} type="date" name="date" id="date" />
+        <button onClick={handleSubmit}>Set Date Range</button>
+      </form>
 
       <GraphicalInfo dealList={dealList} />
 
