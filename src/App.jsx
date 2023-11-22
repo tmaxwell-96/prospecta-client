@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import CompanyList from "./components/CompanyList/CompanyList";
 import DealsList from "./components/DealsList/DealsList";
+import AddEditCompany from "./components/AddEditCompany/AddEditCompany";
 import Footer from "./components/Footer/Footer";
 
 function App() {
@@ -14,6 +15,11 @@ function App() {
           <Routes>
             <Route path="/companies" element={<CompanyList />} />
             <Route path="/deals" element={<DealsList />} />
+            <Route path="/add-company" element={<AddEditCompany />} />
+            <Route
+              path="/edit-company/:companyId"
+              element={<AddEditCompany />}
+            />
           </Routes>
         </div>
         <Footer />

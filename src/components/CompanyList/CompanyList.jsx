@@ -2,6 +2,7 @@ import "./CompanyList.scss";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import CompanyCard from "../CompanyCard/CompanyCard";
+import { Link } from "react-router-dom";
 
 const CompanyList = () => {
   // State
@@ -54,6 +55,9 @@ const CompanyList = () => {
         type="text"
         placeholder="Search Company"
       />
+      <Link to="/add-company">
+        <button>Add New Company</button>
+      </Link>
       <div className="company-list__container">
         {companyList.map((company) => {
           return <CompanyCard key={company.id} company={company} />;

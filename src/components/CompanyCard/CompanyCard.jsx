@@ -1,5 +1,6 @@
 import "./CompanyCard.scss";
 import edit from "../../assets/icons/edit-24px-white.svg";
+import { Link } from "react-router-dom";
 
 const CompanyCard = ({ company }) => {
   return (
@@ -27,7 +28,9 @@ const CompanyCard = ({ company }) => {
             <p className="company-card__text">{company.country}</p>
           </div>
         </div>
-        <img className="company-card__edit" src={edit} alt="edit" />
+        <Link className="company-card__edit" to={`/edit-company/${company.id}`}>
+          <img src={edit} alt="edit" />
+        </Link>
       </div>
     </section>
   );
