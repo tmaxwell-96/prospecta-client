@@ -1,0 +1,8 @@
+.add-edit-company {
+  &__error-field {
+    display: none;
+    &--displayed {
+      display: inline-block;
+    }
+  }
+}

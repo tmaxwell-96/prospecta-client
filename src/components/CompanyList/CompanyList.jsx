@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 const CompanyList = () => {
   // State
   const baseURL = process.env.REACT_APP_BASE_URL;
-  console.log(baseURL);
   const [companyList, setCompanyList] = useState([]);
   const [seachKeyword, setSearchKeyword] = useState("");
 
