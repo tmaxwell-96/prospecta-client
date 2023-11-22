@@ -1,6 +1,6 @@
 import BarChart from "../BarChart/BarChart";
 import { formatNumberWithCommas, sumValues } from "../../functions/functions";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const GraphicalInfo = ({ dealList }) => {
   //Graph State
@@ -35,11 +35,14 @@ const GraphicalInfo = ({ dealList }) => {
     return resultArray;
   }
 
-  const actualData = sumYValuesByMonth(dataPoints);
+  const actualData = sumYValuesByMonth(dataPoints).sort((a, b) =>
+    a.month > b.month ? 1 : -1
+  );
 
   if (actualData.month) {
-    console.log(actualData);
   }
+
+  //Graph Testing
 
   const [graphData, setGraphData] = useState({
     labels: actualData.map((data) => data.month),
@@ -51,11 +54,23 @@ const GraphicalInfo = ({ dealList }) => {
     ],
   });
 
+  useEffect(() => {
+    setGraphData({
+      labels: actualData.map((data) => data.month),
+      datasets: [
+        {
+          label: "Value Per Month",
+          data: actualData.map((data) => data.value),
+        },
+      ],
+    });
+  }, [dealList]);
+
   return (
     <section>
       <h2>Graph goes here</h2>
       {`Total Value: $${formatNumberWithCommas(sumValues(dealList))}`}
-      {/* <BarChart chartData={graphData} /> */}
+      <BarChart chartData={graphData} />
     </section>
   );
 };

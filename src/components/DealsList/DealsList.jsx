@@ -19,12 +19,10 @@ const DealsList = () => {
   };
 
   const handleStartDate = (event) => {
-    // console.log(event.target.value);
     setStartDate(event.target.value);
   };
 
   const handleEndDate = (event) => {
-    // console.log(event.target.value);
     setEndDate(event.target.value);
   };
 
