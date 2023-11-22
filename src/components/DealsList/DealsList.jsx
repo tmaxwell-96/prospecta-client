@@ -1,16 +1,26 @@
 import "./DealsList.scss";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import DealCard from "../DealCard/DealCard";
 import GraphicalInfo from "../GraphicalInfo/GraphicalInfo";
 
 const DealsList = () => {
   // State
-  const baseURL = "http://localhost:8080";
+  const baseURL = process.env.REACT_APP_BASE_URL;
   const [dealList, setDealList] = useState([]);
   const [seachKeyword, setSearchKeyword] = useState("");
   const [starDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+
+  //Get list of deals
+  const getDealList = useCallback(async () => {
+    const response = await axios.get(`${baseURL}/deals`);
+    setDealList(response.data);
+  }, [baseURL]);
+
+  useEffect(() => {
+    getDealList();
+  }, [getDealList]);
 
   //Search function
 
@@ -53,17 +63,7 @@ const DealsList = () => {
     } catch (error) {
       alert(`Error communicating with server. Error: ${error}`);
     }
-  }, [seachKeyword]);
-
-  //Get list of deals
-  const getDealList = async () => {
-    const response = await axios.get(`${baseURL}/deals`);
-    setDealList(response.data);
-  };
-
-  useEffect(() => {
-    getDealList();
-  }, []);
+  }, [baseURL, seachKeyword, getDealList]);
 
   return (
     <section className="company-list">

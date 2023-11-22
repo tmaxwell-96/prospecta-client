@@ -4,10 +4,31 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const AddEditCompany = () => {
-  const baseURL = "http://localhost:8080";
+  const baseURL = process.env.REACT_APP_BASE_URL;
   //Check if editmode
   const { companyId } = useParams();
   const isEditMode = !!companyId;
+
+  const [formData, setFormData] = useState({
+    company_name: "",
+    address: "",
+    city: "",
+    country: "",
+    contact_name: "",
+    contact_position: "",
+    contact_phone: "",
+    contact_email: "",
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(formData);
+  };
 
   //Get specific company details
   const [companyDetails, setCompanyDetails] = useState({});
@@ -15,10 +36,12 @@ const AddEditCompany = () => {
   useEffect(() => {
     const getCompanyDetails = async () => {
       const response = await axios.get(`${baseURL}/companies/${companyId}`);
-      setCompanyDetails(response.data[0]);
+      setFormData(response.data[0]);
     };
     getCompanyDetails();
-  }, [companyId]);
+  }, [baseURL, companyId]);
+
+  //Handle form data
 
   return (
     <section className="add-edit-company">
@@ -31,10 +54,13 @@ const AddEditCompany = () => {
         <button>Go Back</button>
       </Link>
 
-      <form>
+      <form onSubmit={handleSubmit} className="add-edit-company__form">
         <p className="add-edit-company__label">Company Name</p>
         <input
           className="add-edit-company__input-text"
+          onChange={handleChange}
+          value={formData.company_name}
+          name="company_name"
           type="text"
           placeholder={
             isEditMode
@@ -46,6 +72,9 @@ const AddEditCompany = () => {
         <input
           className="add-edit-company__input-text"
           type="text"
+          name="address"
+          onChange={handleChange}
+          value={formData.address}
           placeholder={
             isEditMode
               ? `${companyDetails.address}`
@@ -56,6 +85,9 @@ const AddEditCompany = () => {
         <input
           className="add-edit-company__input-text"
           type="text"
+          name="city"
+          onChange={handleChange}
+          value={formData.city}
           placeholder={
             isEditMode ? `${companyDetails.city}` : "Please Enter City"
           }
@@ -64,6 +96,9 @@ const AddEditCompany = () => {
         <input
           className="add-edit-company__input-text"
           type="text"
+          name="country"
+          onChange={handleChange}
+          value={formData.country}
           placeholder={
             isEditMode
               ? `${companyDetails.country}`
@@ -74,6 +109,9 @@ const AddEditCompany = () => {
         <input
           className="add-edit-company__input-text"
           type="text"
+          name="contact_name"
+          onChange={handleChange}
+          value={formData.contact_name}
           placeholder={
             isEditMode
               ? `${companyDetails.contact_name}`
@@ -84,6 +122,9 @@ const AddEditCompany = () => {
         <input
           className="add-edit-company__input-text"
           type="text"
+          name="contact_position"
+          onChange={handleChange}
+          value={formData.contact_position}
           placeholder={
             isEditMode
               ? `${companyDetails.contact_position}`
@@ -94,6 +135,9 @@ const AddEditCompany = () => {
         <input
           className="add-edit-company__input-text"
           type="text"
+          name="contact_phone"
+          onChange={handleChange}
+          value={formData.contact_phone}
           placeholder={
             isEditMode
               ? `${companyDetails.contact_phone}`
@@ -104,12 +148,16 @@ const AddEditCompany = () => {
         <input
           className="add-edit-company__input-text"
           type="text"
+          name="contact_email"
+          onChange={handleChange}
+          value={formData.contact_email}
           placeholder={
             isEditMode
               ? `${companyDetails.contact_email}`
               : "Please Enter Contact Email"
           }
         />
+        <button className="add-edit-company__button">Create Company</button>
       </form>
     </section>
   );

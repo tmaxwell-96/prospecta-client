@@ -1,14 +1,27 @@
 import "./CompanyList.scss";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import CompanyCard from "../CompanyCard/CompanyCard";
 import { Link } from "react-router-dom";
 
 const CompanyList = () => {
   // State
-  const baseURL = "http://localhost:8080";
+  const baseURL = process.env.REACT_APP_BASE_URL;
+  console.log(baseURL);
   const [companyList, setCompanyList] = useState([]);
   const [seachKeyword, setSearchKeyword] = useState("");
+
+  //Get list of companies
+  const getCompanyList = useCallback(async () => {
+    try {
+      const response = await axios.get(`${baseURL}/companies`);
+      setCompanyList(response.data);
+    } catch (error) {
+      alert(
+        `There was an issue communicating with the server, please try again later. Error: ${error}`
+      );
+    }
+  }, [baseURL]);
 
   //Search function
 
@@ -34,17 +47,11 @@ const CompanyList = () => {
     } else {
       getCompanyList();
     }
-  }, [seachKeyword]);
-
-  //Get list of companies
-  const getCompanyList = async () => {
-    const response = await axios.get(`${baseURL}/companies`);
-    setCompanyList(response.data);
-  };
+  }, [baseURL, seachKeyword, getCompanyList]);
 
   useEffect(() => {
     getCompanyList();
-  }, []);
+  }, [getCompanyList]);
 
   return (
     <section className="company-list">
