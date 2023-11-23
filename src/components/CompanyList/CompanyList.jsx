@@ -5,6 +5,8 @@ import CompanyCard from "../CompanyCard/CompanyCard";
 import { Link } from "react-router-dom";
 
 const CompanyList = () => {
+  const token = sessionStorage.getItem("JWTtoken");
+  console.log(token);
   // State
   const baseURL = process.env.REACT_APP_BASE_URL;
   const [companyList, setCompanyList] = useState([]);
@@ -13,7 +15,11 @@ const CompanyList = () => {
   //Get list of companies
   const getCompanyList = useCallback(async () => {
     try {
-      const response = await axios.get(`${baseURL}/companies`);
+      const response = await axios.get(`${baseURL}/companies`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setCompanyList(response.data);
     } catch (error) {
       alert(
@@ -32,7 +38,12 @@ const CompanyList = () => {
     const searchInfo = async () => {
       try {
         const response = await axios.get(
-          `${baseURL}/search/companies?searchTerm=${seachKeyword}`
+          `${baseURL}/search/companies?searchTerm=${seachKeyword}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
         setCompanyList(response.data);
       } catch (error) {
