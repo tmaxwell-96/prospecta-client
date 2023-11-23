@@ -49,10 +49,7 @@ function NavigationComponent() {
     <div className="app__content">
       <Routes>
         <Route path="/signup" element={<Signup />} />
-        <Route
-          path="/login"
-          element={<LoginPage handleLogin={handleLogin} />}
-        />
+        <Route path="/" element={<LoginPage handleLogin={handleLogin} />} />
         <Route path="/error" element={<NotLoggedIn />} />
         <Route
           path="/companies"

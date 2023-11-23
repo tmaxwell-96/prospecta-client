@@ -14,7 +14,7 @@ const Signup = () => {
         name: event.target.name.value,
         password: event.target.password.value,
       });
-      navigate("/login");
+      navigate("/");
     } catch (error) {
       console.error(error);
     }
@@ -37,7 +37,7 @@ const Signup = () => {
           Signup
         </button>
         <p>Already a User?</p>
-        <Link to="/login">
+        <Link to="/">
           <button> Login</button>
         </Link>
       </form>
