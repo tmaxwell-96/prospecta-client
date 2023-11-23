@@ -1,20 +1,21 @@
 import BarChart from "../BarChart/BarChart";
 import { formatNumberWithCommas, sumValues } from "../../functions/functions";
 import { useState, useEffect } from "react";
+import moment from "moment";
 
 const GraphicalInfo = ({ dealList }) => {
   //Graph State
 
   const dataPoints = dealList.map((deal) => ({
     x: deal.expected_sale_date,
-    y: deal.value,
+    y: deal.value * (Number(deal.percent_certainty.replace(/%/g, "")) / 100),
   }));
 
   function sumYValuesByMonth(dataArray) {
     const monthlySum = {};
 
     dataArray.forEach((data) => {
-      const date = new Date(data.x);
+      const date = moment(data.x).toDate();
       const yearMonth = `${date.getFullYear()}-${(date.getMonth() + 1)
         .toString()
         .padStart(2, "0")}`;
