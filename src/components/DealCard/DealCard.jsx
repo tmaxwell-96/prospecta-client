@@ -1,6 +1,7 @@
 import "./DealCard.scss";
 import edit from "../../assets/icons/edit-24px-white.svg";
 import { formatNumberWithCommas } from "../../functions/functions";
+import { Link } from "react-router-dom";
 
 const DealCard = ({ deal }) => {
   const percentage = deal.percent_certainty;
@@ -29,7 +30,9 @@ const DealCard = ({ deal }) => {
             <p className="deal-card__text">{deal.expected_sale_date}</p>
           </div>
         </div>
-        <img className="deal-card__edit" src={edit} alt="edit" />
+        <Link className="deal-card__edit" to={`/edit-deal/${deal.id}`}>
+          <img src={edit} alt="edit" />
+        </Link>
       </div>
     </section>
   );

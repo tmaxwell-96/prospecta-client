@@ -5,6 +5,7 @@ import CompanyList from "./components/CompanyList/CompanyList";
 import DealsList from "./components/DealsList/DealsList";
 import AddEditCompany from "./components/AddEditCompany/AddEditCompany";
 import Footer from "./components/Footer/Footer";
+import AddEditDeal from "./components/AddEditDeal/AddEditDeal";
 
 function App() {
   return (
@@ -16,10 +17,12 @@ function App() {
             <Route path="/companies" element={<CompanyList />} />
             <Route path="/deals" element={<DealsList />} />
             <Route path="/add-company" element={<AddEditCompany />} />
+            <Route path="/add-deal" element={<AddEditDeal />} />
             <Route
               path="/edit-company/:companyId"
               element={<AddEditCompany />}
             />
+            <Route path="/edit-deal/:dealId" element={<AddEditDeal />} />
           </Routes>
         </div>
         <Footer />

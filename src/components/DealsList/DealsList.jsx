@@ -1,6 +1,7 @@
 import "./DealsList.scss";
 import axios from "axios";
 import { useState, useEffect, useCallback } from "react";
+import { Link } from "react-router-dom";
 import DealCard from "../DealCard/DealCard";
 import GraphicalInfo from "../GraphicalInfo/GraphicalInfo";
 
@@ -68,6 +69,9 @@ const DealsList = () => {
   return (
     <section className="company-list">
       <h2 className="company-list__header">Deals</h2>
+      <Link to="/add-deal">
+        <button className="deal-list__add-button">Add new Deal</button>
+      </Link>
       <input
         onChange={handleSearch}
         name="search"

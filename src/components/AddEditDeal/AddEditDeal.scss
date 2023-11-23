@@ -1,0 +1,8 @@
+.add-edit-deal {
+  &__error-field {
+    display: none;
+    &--displayed {
+      display: inline-block;
+    }
+  }
+}
