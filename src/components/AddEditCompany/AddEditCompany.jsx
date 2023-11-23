@@ -4,6 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const AddEditCompany = () => {
+  const token = sessionStorage.getItem("JWTtoken");
   const baseURL = process.env.REACT_APP_BASE_URL;
   const navigate = useNavigate();
   //Check if editmode
@@ -52,14 +53,32 @@ const AddEditCompany = () => {
     if (isFormValid()) {
       if (isEditMode) {
         const changeCompany = async () => {
-          await axios.put(`${baseURL}/companies/${companyId}`, formData);
+          await axios.put(
+            `${baseURL}/companies/${companyId}`,
+
+            formData,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
         };
         changeCompany();
         alert("Company updated! Returning to companies page.");
         navigate("/companies");
       } else {
         const postCompany = async () => {
-          await axios.post(`${baseURL}/companies`, formData);
+          await axios.post(
+            `${baseURL}/companies`,
+
+            formData,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
           alert("Company created! Returning to companies page.");
           navigate("/companies");
         };
@@ -72,7 +91,11 @@ const AddEditCompany = () => {
 
   useEffect(() => {
     const getformData = async () => {
-      const response = await axios.get(`${baseURL}/companies/${companyId}`);
+      const response = await axios.get(`${baseURL}/companies/${companyId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (isEditMode) {
         setFormData({
           company_name: response.data[0].company_name,

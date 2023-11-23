@@ -24,7 +24,6 @@ function NavigationComponent() {
         username: event.target.username.value,
         password: event.target.password.value,
       });
-      console.log(response.data.token);
       sessionStorage.setItem("JWTtoken", response.data.token);
       setIsLoggedIn(true);
       navigate("/companies");
@@ -33,7 +32,6 @@ function NavigationComponent() {
       console.error("Username or password not recognized", error);
     }
   };
-  console.log(isLoggedIn);
 
   useEffect(() => {
     const checkLogin = () => {

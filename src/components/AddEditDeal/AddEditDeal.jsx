@@ -4,6 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const AddEditDeal = () => {
+  const token = sessionStorage.getItem("JWTtoken");
   const baseURL = process.env.REACT_APP_BASE_URL;
   const navigate = useNavigate();
   //Check if editmode
@@ -49,21 +50,39 @@ const AddEditDeal = () => {
     if (isFormValid()) {
       if (isEditMode) {
         const changeDeal = async () => {
-          await axios.put(`${baseURL}/deals/${dealId}`, {
-            deal_name: formData.deal_name,
-            description: formData.description,
-            value: formData.value,
-            percent_certainty: formData.percent_certainty,
-            expected_sale_date: formData.expected_sale_date,
-            company_id: formData.company_id,
-          });
+          await axios.put(
+            `${baseURL}/deals/${dealId}`,
+
+            {
+              deal_name: formData.deal_name,
+              description: formData.description,
+              value: formData.value,
+              percent_certainty: formData.percent_certainty,
+              expected_sale_date: formData.expected_sale_date,
+              company_id: formData.company_id,
+            },
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
         };
         changeDeal();
         alert("Deal updated! Returning to companies page.");
         navigate("/deals");
       } else {
         const postDeal = async () => {
-          await axios.post(`${baseURL}/deals`, formData);
+          await axios.post(
+            `${baseURL}/deals`,
+
+            formData,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
           alert("Deal created! Returning to companies page.");
           navigate("/deals");
         };
@@ -74,7 +93,11 @@ const AddEditDeal = () => {
 
   useEffect(() => {
     const getformData = async () => {
-      const response = await axios.get(`${baseURL}/deals/${dealId}`);
+      const response = await axios.get(`${baseURL}/deals/${dealId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (isEditMode) {
         setFormData({
           deal_name: response.data[0].deal_name,
@@ -103,7 +126,11 @@ const AddEditDeal = () => {
   //Get list of companies
 
   const getCompanyList = async () => {
-    const response = await axios.get(`${baseURL}/companies`);
+    const response = await axios.get(`${baseURL}/companies`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     const allCompanies = response.data.map((singleCompany) => {
       return singleCompany;
     });

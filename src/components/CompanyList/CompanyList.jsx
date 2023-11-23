@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 
 const CompanyList = () => {
   const token = sessionStorage.getItem("JWTtoken");
-  console.log(token);
   // State
   const baseURL = process.env.REACT_APP_BASE_URL;
   const [companyList, setCompanyList] = useState([]);

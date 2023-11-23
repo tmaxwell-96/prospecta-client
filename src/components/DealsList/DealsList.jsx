@@ -6,6 +6,7 @@ import DealCard from "../DealCard/DealCard";
 import GraphicalInfo from "../GraphicalInfo/GraphicalInfo";
 
 const DealsList = () => {
+  const token = sessionStorage.getItem("JWTtoken");
   // State
   const baseURL = process.env.REACT_APP_BASE_URL;
   const [dealList, setDealList] = useState([]);
@@ -15,7 +16,11 @@ const DealsList = () => {
 
   //Get list of deals
   const getDealList = useCallback(async () => {
-    const response = await axios.get(`${baseURL}/deals`);
+    const response = await axios.get(`${baseURL}/deals`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     setDealList(response.data);
   }, [baseURL]);
 
@@ -43,7 +48,16 @@ const DealsList = () => {
       startDate: starDate,
       endDate: endDate,
     };
-    const response = await axios.post(`${baseURL}/search`, dateRange);
+    const response = await axios.post(
+      `${baseURL}/search`,
+
+      dateRange,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     setDealList(response.data);
   };
 
@@ -51,7 +65,12 @@ const DealsList = () => {
     try {
       const searchInfo = async () => {
         const response = await axios.get(
-          `${baseURL}/search/deals?searchTerm=${seachKeyword}`
+          `${baseURL}/search/deals?searchTerm=${seachKeyword}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
         setDealList(response.data);
       };
