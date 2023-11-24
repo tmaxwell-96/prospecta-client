@@ -1,20 +1,44 @@
+// DealsList.js
 import "./DealsList.scss";
 import axios from "axios";
 import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import DealCard from "../DealCard/DealCard";
 import GraphicalInfo from "../GraphicalInfo/GraphicalInfo";
+import styled from "styled-components";
+
+const StyledDealsList = styled.section`
+  .fadeIn {
+    animation: fadeInAnimation 1s ease-in-out;
+  }
+
+  @keyframes fadeInAnimation {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+`;
+
+const StyledDealCard = styled.div`
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+
+  &.fadeIn {
+    opacity: 1;
+  }
+`;
 
 const DealsList = () => {
   const token = sessionStorage.getItem("JWTtoken");
-  // State
   const baseURL = process.env.REACT_APP_BASE_URL;
   const [dealList, setDealList] = useState([]);
   const [seachKeyword, setSearchKeyword] = useState("");
   const [starDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
-  //Get list of deals
   const getDealList = useCallback(async () => {
     const response = await axios.get(`${baseURL}/deals`, {
       headers: {
@@ -22,13 +46,11 @@ const DealsList = () => {
       },
     });
     setDealList(response.data);
-  }, [baseURL]);
+  }, [baseURL, token]);
 
   useEffect(() => {
     getDealList();
   }, [getDealList]);
-
-  //Search function
 
   const handleSearch = (event) => {
     setSearchKeyword(event.target.value);
@@ -48,20 +70,13 @@ const DealsList = () => {
       startDate: starDate,
       endDate: endDate,
     };
-    const response = await axios.post(
-      `${baseURL}/search`,
-
-      dateRange,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const response = await axios.post(`${baseURL}/search`, dateRange, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     setDealList(response.data);
   };
-
-  //Delete Deal Function
 
   const deleteDeal = async (event) => {
     try {
@@ -98,10 +113,10 @@ const DealsList = () => {
     } catch (error) {
       alert(`Error communicating with server. Error: ${error}`);
     }
-  }, [baseURL, seachKeyword, getDealList]);
+  }, [baseURL, seachKeyword, getDealList, token]);
 
   return (
-    <section className="company-list">
+    <StyledDealsList className="company-list">
       <h2 className="company-list__header">Deals</h2>
       <Link to="/add-deal">
         <button className="deal-list__add-button">Add new Deal</button>
@@ -115,7 +130,6 @@ const DealsList = () => {
       <form action="">
         <h3 className="company-list__header">Date Range</h3>
         <p>From</p>
-
         <input onBlur={handleStartDate} type="date" name="date" id="date" />
         <p>To</p>
         <input onBlur={handleEndDate} type="date" name="date" id="date" />
@@ -126,10 +140,14 @@ const DealsList = () => {
 
       <div className="company-list__container">
         {dealList.map((deal) => {
-          return <DealCard key={deal.id} deleteDeal={deleteDeal} deal={deal} />;
+          return (
+            <StyledDealCard key={deal.id} className="fadeIn">
+              <DealCard deleteDeal={deleteDeal} deal={deal} />
+            </StyledDealCard>
+          );
         })}
       </div>
-    </section>
+    </StyledDealsList>
   );
 };
 

@@ -10,6 +10,7 @@ import AddEditDeal from "./components/AddEditDeal/AddEditDeal";
 import LoginPage from "./Pages/LoginPage/LoginPage";
 import NotLoggedIn from "./components/NotLoggedIn/NotLoggedIn";
 import Signup from "./components/Signup/Signup";
+import Landing from "./components/Landing/Landing";
 import axios from "axios";
 
 function NavigationComponent() {
@@ -26,7 +27,7 @@ function NavigationComponent() {
       });
       sessionStorage.setItem("JWTtoken", response.data.token);
       setIsLoggedIn(true);
-      navigate("/companies");
+      navigate("/home");
     } catch (error) {
       setIsLoggedIn(false);
       console.error("Username or password not recognized", error);
@@ -51,6 +52,10 @@ function NavigationComponent() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/" element={<LoginPage handleLogin={handleLogin} />} />
         <Route path="/error" element={<NotLoggedIn />} />
+        <Route
+          path="/home"
+          element={isLoggedIn ? <Landing /> : <NotLoggedIn />}
+        />
         <Route
           path="/companies"
           element={isLoggedIn ? <CompanyList /> : <NotLoggedIn />}

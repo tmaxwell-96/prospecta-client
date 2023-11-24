@@ -46,7 +46,12 @@ const GraphicalInfo = ({ dealList }) => {
   //Graph Testing
 
   const [graphData, setGraphData] = useState({
-    labels: actualData.map((data) => data.month),
+    labels: actualData.map((data) =>
+      new Date(data.month).toLocaleDateString("en-us", {
+        year: "numeric",
+        month: "short",
+      })
+    ),
     datasets: [
       {
         label: "Value Per Month",
