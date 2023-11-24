@@ -241,7 +241,7 @@ const AddEditDeal = () => {
           })}
         </select>
 
-        {renderError(formData.company_name)}
+        {renderError(formData.company_id)}
 
         <button className="add-edit-deal__button">{`${
           isEditMode ? "Update Deal" : "Create Deal"

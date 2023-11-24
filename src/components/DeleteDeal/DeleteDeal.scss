@@ -1,0 +1,83 @@
+.modal {
+  background-color: white;
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+
+  //   @include tablet {
+  //     background-color: rgba(19, 24, 44, 0.7);
+  //     display: flex;
+  //     justify-content: center;
+  //   }
+
+  &__wrapper {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 4px;
+    height: 100%;
+
+    // @include tablet {
+    //   width: 42rem;
+    //   height: 16rem;
+    //   margin-top: 10rem;
+    //   padding: 2rem;
+    // }
+  }
+
+  &__close {
+    align-self: flex-end;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 500;
+  }
+
+  &__bottom {
+    margin-top: auto;
+    align-self: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    // @include tablet {
+    //   justify-content: flex-end;
+    // }
+  }
+
+  &__cancel,
+  &__delete {
+    padding: 0.5rem 3.5rem;
+    border-radius: 1.25rem;
+    border: none;
+
+    // @include tablet {
+    //   padding: 0.5rem 1rem;
+    // }
+  }
+
+  &__delete {
+    background-color: lightcoral;
+    color: white;
+    &:hover {
+      background-color: lightslategray;
+    }
+  }
+
+  &__cancel {
+    background-color: white;
+    border: 1px solid lightgray;
+    &:hover {
+      color: lightcyan;
+      border: 1px solid lightseagreen;
+    }
+
+    // @include tablet {
+    //   margin-right: 1rem;
+    // }
+  }
+}

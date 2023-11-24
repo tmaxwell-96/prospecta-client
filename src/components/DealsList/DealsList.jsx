@@ -61,6 +61,21 @@ const DealsList = () => {
     setDealList(response.data);
   };
 
+  //Delete Deal Function
+
+  const deleteDeal = async (event) => {
+    try {
+      await axios.delete(`${baseURL}/deals/${event}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      getDealList();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
     try {
       const searchInfo = async () => {
@@ -111,7 +126,7 @@ const DealsList = () => {
 
       <div className="company-list__container">
         {dealList.map((deal) => {
-          return <DealCard key={deal.id} deal={deal} />;
+          return <DealCard key={deal.id} deleteDeal={deleteDeal} deal={deal} />;
         })}
       </div>
     </section>

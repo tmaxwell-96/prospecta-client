@@ -2,8 +2,12 @@ import "./DealCard.scss";
 import edit from "../../assets/icons/edit-24px-white.svg";
 import { formatNumberWithCommas } from "../../functions/functions";
 import { Link } from "react-router-dom";
+import Modal from "react-modal";
+import DeleteDeal from "../DeleteDeal/DeleteDeal";
 
-const DealCard = ({ deal }) => {
+Modal.setAppElement("#root");
+
+const DealCard = ({ deal, deleteDeal }) => {
   const percentage = deal.percent_certainty;
   const certaintyNumber = percentage.replace(/%/g, "");
 
@@ -24,7 +28,7 @@ const DealCard = ({ deal }) => {
             <p className="deal-card__text">{deal.percent_certainty}</p>
             <p className="deal-card__label">Weighted Value</p>
             <p className="deal-card__text">{`$${formatNumberWithCommas(
-              (Number(certaintyNumber) / 100) * deal.value
+              Math.floor((Number(certaintyNumber) / 100) * deal.value)
             )}`}</p>
             <p className="deal-card__label">Expected Sale Date</p>
             <p className="deal-card__text">{deal.expected_sale_date}</p>
@@ -33,6 +37,9 @@ const DealCard = ({ deal }) => {
         <Link className="deal-card__edit" to={`/edit-deal/${deal.id}`}>
           <img src={edit} alt="edit" />
         </Link>
+        <div className="deal-card__delete">
+          <DeleteDeal deleteDeal={deleteDeal} deal={deal} />
+        </div>
       </div>
     </section>
   );
