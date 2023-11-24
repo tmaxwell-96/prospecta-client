@@ -2,6 +2,7 @@ import "./App.scss";
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import Header from "./components/Header/Header";
+import Nav from "./components/Nav/Nav";
 import CompanyList from "./components/CompanyList/CompanyList";
 import DealsList from "./components/DealsList/DealsList";
 import AddEditCompany from "./components/AddEditCompany/AddEditCompany";
@@ -13,9 +14,8 @@ import Signup from "./components/Signup/Signup";
 import Landing from "./components/Landing/Landing";
 import axios from "axios";
 
-function NavigationComponent() {
+function NavigationComponent({ isLoggedIn, setIsLoggedIn }) {
   const baseURL = process.env.REACT_APP_BASE_URL;
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async (event) => {
@@ -86,11 +86,17 @@ function NavigationComponent() {
 }
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   return (
     <div className="app">
       <BrowserRouter>
         <Header />
-        <NavigationComponent />
+        {isLoggedIn && <Nav />}
+        <NavigationComponent
+          isLoggedIn={isLoggedIn}
+          setIsLoggedIn={setIsLoggedIn}
+        />
         <Footer />
       </BrowserRouter>
     </div>

@@ -67,6 +67,11 @@ const GraphicalInfo = ({ dealList }) => {
         {
           label: "Value Per Month",
           data: actualData.map((data) => data.value),
+          backgroundColor: ["#cc4425"],
+          borderColor: ["black"],
+          borderWidth: 1,
+          borderRadius: 4,
+          paddingTop: 10,
         },
       ],
     });

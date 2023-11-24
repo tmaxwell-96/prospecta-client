@@ -1,35 +1,15 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import logo from "../../assets/icons/logo.svg";
 import "./Header.scss";
 
 const Header = () => {
-  const location = useLocation();
-
-  const isActive = (path) => {
-    return location.pathname.endsWith(path);
-  };
-
   return (
     <div className="header">
-      <h1 className="header__title">Prospecta</h1>
-      <nav className="nav">
-        <Link
-          className={`nav__link ${
-            isActive("/companies") ? "nav__link--active" : ""
-          }`}
-          to="/companies"
-        >
-          Companies
-        </Link>
-        <Link
-          className={`nav__link ${
-            isActive("/deals") ? "nav__link--active" : ""
-          }`}
-          to="/deals"
-        >
-          Deals
-        </Link>
-      </nav>
+      <div className="header__logo-container">
+        <img className="header__img" src={logo} alt="logo" />
+        <h1 className="header__title">Prospecta</h1>
+      </div>
     </div>
   );
 };

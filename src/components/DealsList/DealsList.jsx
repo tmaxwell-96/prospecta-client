@@ -116,8 +116,8 @@ const DealsList = () => {
   }, [baseURL, seachKeyword, getDealList, token]);
 
   return (
-    <StyledDealsList className="company-list">
-      <h2 className="company-list__header">Deals</h2>
+    <StyledDealsList className="deal-list">
+      <h2 className="deal-list__header">Deals</h2>
       <Link to="/add-deal">
         <button className="deal-list__add-button">Add new Deal</button>
       </Link>
@@ -128,7 +128,7 @@ const DealsList = () => {
         placeholder="Search Company"
       />
       <form action="">
-        <h3 className="company-list__header">Date Range</h3>
+        <h3 className="deal-list__header">Date Range</h3>
         <p>From</p>
         <input onBlur={handleStartDate} type="date" name="date" id="date" />
         <p>To</p>
@@ -138,7 +138,7 @@ const DealsList = () => {
 
       <GraphicalInfo dealList={dealList} />
 
-      <div className="company-list__container">
+      <div className="deal-list__container">
         {dealList.map((deal) => {
           return (
             <StyledDealCard key={deal.id} className="fadeIn">

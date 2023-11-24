@@ -1,0 +1,28 @@
+@use "../../styles//partials/mixins" as *;
+@use "../../styles//partials/typography" as *;
+@use "../../styles//partials/variables" as *;
+
+.nav {
+  background-color: $Prospecta-primary-mid;
+  padding: 1rem 0 0 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10%;
+
+  &__link {
+    line-height: auto;
+    text-decoration: none;
+    color: $Prospecta-primary-light;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    background-color: $Prospecta-primary-dark;
+
+    &:hover {
+      background-color: $Prospecta-primary-hover;
+    }
+    &--active {
+      background-color: $Prospecta-primary-cta;
+    }
+  }
+}

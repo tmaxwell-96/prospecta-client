@@ -1,10 +1,19 @@
+@use "./styles/partials/typography" as *;
+@use "./styles/partials/variables" as *;
+@use "./styles/partials/mixins" as *;
+
 * {
   margin: 0;
   box-sizing: border-box;
 }
 
+body {
+  font-family: "Oswald", Verdana, sans-serif;
+}
+
 h1 {
   font-size: 1.75rem;
+  font-family: "Arvo", Verdana, sans-serif;
 }
 
 h2 {
@@ -21,6 +30,6 @@ p {
 
 .app {
   &__content {
-    border: 1px dashed red;
+    background-color: $Prospecta-primary-mid;
   }
 }

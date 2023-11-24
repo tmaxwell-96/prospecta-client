@@ -1,5 +1,10 @@
+@use "../../styles//partials/mixins" as *;
+@use "../../styles//partials/typography" as *;
+@use "../../styles//partials/variables" as *;
+
 .company-card {
-  border: 1px solid lightslategray;
+  background-color: $Prospecta-primary-light;
+  border: 1px solid $Prospecta-primary-border;
   border-radius: 8px;
   box-shadow: 7px 10px 10px rgba($color: #000000, $alpha: 0.3);
   padding: 1rem;
@@ -22,13 +27,13 @@
   }
 
   &__label {
-    color: lightslategray;
+    color: $Prospecta-primary-light-text;
     margin: 1rem 0 0 0;
   }
 
   &__edit {
     margin: auto 0 0 auto;
-    border: 1px solid lightslategray;
+    border: 1px solid $Prospecta-primary-border;
     border-radius: 50px;
     padding: 0.5rem;
   }

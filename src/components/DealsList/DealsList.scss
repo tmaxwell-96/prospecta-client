@@ -1,0 +1,12 @@
+.fadeIn {
+  width: 100%;
+}
+
+.deal-list {
+  padding: 1rem;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
