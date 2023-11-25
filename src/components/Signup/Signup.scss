@@ -1,0 +1,40 @@
+@use "../../styles//partials/mixins" as *;
+@use "../../styles//partials/typography" as *;
+@use "../../styles//partials/variables" as *;
+
+.signup {
+  &__button {
+    @include button-style;
+  }
+  &__heading {
+    margin-bottom: 1rem;
+  }
+  &-form {
+    &-group {
+      margin-bottom: 1rem;
+    }
+    &__input {
+      @include input-field;
+      width: 100%;
+    }
+    &__button {
+      @include button-style;
+    }
+  }
+
+  &__existing-user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  &__error-field {
+    display: none;
+    &--displayed {
+      display: inline-block;
+    }
+  }
+}
