@@ -103,12 +103,14 @@ function App() {
     <div className="app">
       <BrowserRouter>
         <Header />
+        <div className="app__content-wrapper">
+          {isLoggedIn && <Nav />}
+          <NavigationComponent
+            isLoggedIn={isLoggedIn}
+            setIsLoggedIn={setIsLoggedIn}
+          />
+        </div>
 
-        {isLoggedIn && <Nav />}
-        <NavigationComponent
-          isLoggedIn={isLoggedIn}
-          setIsLoggedIn={setIsLoggedIn}
-        />
         <Footer />
       </BrowserRouter>
     </div>

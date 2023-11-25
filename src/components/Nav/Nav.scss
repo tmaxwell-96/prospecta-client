@@ -10,6 +10,28 @@
   justify-content: center;
   gap: 10%;
 
+  &__icon {
+    display: none;
+    @include tablet {
+      display: inline-block;
+      height: 20px;
+      margin-right: 0.25rem;
+    }
+  }
+
+  @include tablet {
+    flex-direction: column;
+    width: max-content;
+    position: fixed;
+    height: 10rem;
+    top: 150px;
+    left: 0;
+    background-color: $Prospecta-primary-dark;
+    padding: 0;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+
   &__link {
     line-height: auto;
     text-decoration: none;
@@ -17,6 +39,12 @@
     padding: 0.5rem 1rem;
     border-radius: 20px;
     background-color: $Prospecta-primary-dark;
+    @include tablet {
+      border-radius: 0;
+      padding: 0.5rem 0.5rem;
+      display: flex;
+      align-items: center;
+    }
 
     &:hover {
       background-color: $Prospecta-primary-hover;

@@ -31,7 +31,17 @@ p {
 .app {
   &__content {
     background-color: $Prospecta-primary-mid;
-    padding: 1rem;
+    @include tablet {
+      margin-left: 5rem;
+    }
+
+    &-wrapper {
+      padding: 1rem;
+      background-color: $Prospecta-primary-mid;
+      @include tablet {
+        padding: 1rem 2rem;
+      }
+    }
   }
 
   &__header {
