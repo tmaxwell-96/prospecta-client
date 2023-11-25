@@ -2,7 +2,7 @@
 @use "../../styles//partials/typography" as *;
 @use "../../styles//partials/variables" as *;
 
-.delete-deal {
+.delete-company {
   &__button {
     @include button-style;
   }
@@ -39,6 +39,7 @@
 
   &__close {
     align-self: flex-end;
+    @include button-style;
   }
 
   &__title {
@@ -53,7 +54,6 @@
     display: flex;
     justify-content: center;
     gap: 3rem;
-
     width: 100%;
 
     // @include tablet {

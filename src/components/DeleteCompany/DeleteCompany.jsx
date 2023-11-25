@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import "./DeleteDeal.scss";
+import "./DeleteCompany.scss";
 import axios from "axios";
 
 Modal.setAppElement("#root");
 
-const DeleteDeal = ({ deal, deleteDeal }) => {
+const DeleteCompany = ({ company, deleteCompany }) => {
   const baseURL = process.env.REACT_APP_BASE_URL;
   const [modalIsOpen, setIsOpen] = useState(false);
   const token = sessionStorage.getItem("JWTtoken");
@@ -20,7 +20,7 @@ const DeleteDeal = ({ deal, deleteDeal }) => {
 
   return (
     <div>
-      <button className="delete-deal__button" onClick={openModal}>
+      <button className="delete-company__button" onClick={openModal}>
         Delete
       </button>
       <Modal
@@ -32,19 +32,18 @@ const DeleteDeal = ({ deal, deleteDeal }) => {
           <button onClick={closeModal} className="modal__close">
             Close
           </button>
-          <h2 className="modal__title">{`Delete deal?`}</h2>
+          <h2 className="modal__title">{`Delete company?`}</h2>
           <p>
-            {`Please confirm that you'd like to delete ${deal.deal_name} from the list of deals`}
+            {`Please confirm that you'd like to delete ${company.company_name} from the list of companies.`}
           </p>
           <p>This action cannot be undone.</p>
-
           <div className="modal__bottom">
             <button className="modal__cancel" onClick={closeModal}>
               Cancel
             </button>
             <button
               onClick={() => {
-                deleteDeal(deal.id);
+                deleteCompany(company.id);
                 closeModal();
               }}
               className="modal__delete"
@@ -58,4 +57,4 @@ const DeleteDeal = ({ deal, deleteDeal }) => {
   );
 };
 
-export default DeleteDeal;
+export default DeleteCompany;

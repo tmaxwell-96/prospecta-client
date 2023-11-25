@@ -1,11 +1,13 @@
 import "./CompanyCard.scss";
 import edit from "../../assets/icons/edit-24px-white.svg";
+import DeleteDeal from "../DeleteDeal/DeleteDeal";
 import { Link } from "react-router-dom";
+import DeleteCompany from "../DeleteCompany/DeleteCompany";
 
-const CompanyCard = ({ company }) => {
+const CompanyCard = ({ company, deleteCompany }) => {
   return (
     <section className="company-card">
-      <h3 className="company-card__name">{company.company_name}</h3>
+      <h2 className="company-card__name">{company.company_name}</h2>
 
       <div className="company-card__content">
         <div className="company-card__content-lower">
@@ -28,9 +30,12 @@ const CompanyCard = ({ company }) => {
             <p className="company-card__text">{company.country}</p>
           </div>
         </div>
-        <Link className="company-card__edit" to={`/edit-company/${company.id}`}>
-          <img src={edit} alt="edit" />
+        <Link className="deal-card__edit-link" to={`/edit-deal/${company.id}`}>
+          <img className="deal-card__edit" src={edit} alt="edit" />
         </Link>
+        <div className="deal-card__delete">
+          <DeleteCompany deleteCompany={deleteCompany} company={company} />
+        </div>
       </div>
     </section>
   );

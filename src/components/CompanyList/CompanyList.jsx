@@ -89,6 +89,20 @@ const CompanyList = () => {
     getCompanyList();
   }, [getCompanyList]);
 
+  //Delete company
+  const deleteCompany = async (event) => {
+    try {
+      await axios.delete(`${baseURL}/companies/${event}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      getCompanyList();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <section className="company-list">
       <h2 className="company-list__header">Company List</h2>
@@ -109,7 +123,13 @@ const CompanyList = () => {
       />
       <div className="company-list__container">
         {companyList.map((company) => {
-          return <CompanyCard key={company.id} company={company} />;
+          return (
+            <CompanyCard
+              key={company.id}
+              deleteCompany={deleteCompany}
+              company={company}
+            />
+          );
         })}
       </div>
     </section>
