@@ -107,13 +107,14 @@ const CompanyList = () => {
     <section className="company-list">
       <h2 className="company-list__header">Company List</h2>
       <input
+        className="company-list__input"
         onChange={handleSearch}
         name="search"
         type="text"
         placeholder="Search Company"
       />
       <Link to="/add-company">
-        <button>Add New Company</button>
+        <button className="company-list__button">Add New Company</button>
       </Link>
       <img
         onClick={handleScrollUp}

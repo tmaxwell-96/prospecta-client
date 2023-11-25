@@ -10,6 +10,18 @@
     align-items: center;
   }
 
+  &__input {
+    @include input-field;
+    display: block;
+    margin: 1rem 0;
+    width: 100%;
+  }
+
+  &__button {
+    @include button-style;
+    width: 100%;
+  }
+
   &__scroll-up {
     background-color: $Prospecta-primary-dark;
     border-radius: 50px;

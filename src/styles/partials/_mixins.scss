@@ -30,6 +30,10 @@
   border-radius: 20px;
   border: 1px solid $Prospecta-primary-border;
   padding: 0.25rem 0.5rem;
+  &:focus {
+    outline: none;
+    border: 1px solid $Prospecta-primary-dark;
+  }
 }
 
 @mixin content-container {

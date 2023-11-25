@@ -79,7 +79,6 @@ const GraphicalInfo = ({ dealList }) => {
 
   return (
     <section>
-      <h2>Graph goes here</h2>
       {`Total Value: $${formatNumberWithCommas(sumValues(dealList))}`}
       <BarChart chartData={graphData} />
     </section>

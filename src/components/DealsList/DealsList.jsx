@@ -145,22 +145,38 @@ const DealsList = () => {
   return (
     <StyledDealsList className="deal-list">
       <h2 className="deal-list__header">Deals</h2>
-      <Link to="/add-deal">
-        <button className="deal-list__add-button">Add new Deal</button>
-      </Link>
       <input
+        className="deal-list__input"
         onChange={handleSearch}
         name="search"
         type="text"
         placeholder="Search Company"
       />
+      <Link to="/add-deal">
+        <button className="deal-list__add-button">Add new Deal</button>
+      </Link>
+
       <form action="">
         <h3 className="deal-list__header">Date Range</h3>
-        <p>From</p>
-        <input onBlur={handleStartDate} type="date" name="date" id="date" />
-        <p>To</p>
-        <input onBlur={handleEndDate} type="date" name="date" id="date" />
-        <button onClick={handleSubmit}>Set Date Range</button>
+        <p>From:</p>
+        <input
+          className="deal-list__date-input"
+          onBlur={handleStartDate}
+          type="date"
+          name="date"
+          id="date"
+        />
+        <p>To:</p>
+        <input
+          className="deal-list__date-input"
+          onBlur={handleEndDate}
+          type="date"
+          name="date"
+          id="date"
+        />
+        <button className="deal-list__date-button" onClick={handleSubmit}>
+          Set Date Range
+        </button>
       </form>
 
       <img
