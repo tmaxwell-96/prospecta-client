@@ -14,14 +14,23 @@ body {
 h1 {
   font-size: 1.75rem;
   font-family: "Arvo", Verdana, sans-serif;
+  @include tablet {
+    font-size: 2rem;
+  }
 }
 
 h2 {
   font-size: 1.25rem;
+  @include tablet {
+    font-size: 1.5rem;
+  }
 }
 
 h3 {
   font-size: 0.8125rem;
+  @include tablet {
+    font-size: 0.875rem;
+  }
 }
 
 p {

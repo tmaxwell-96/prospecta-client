@@ -9,16 +9,64 @@
     align-items: center;
   }
 
+  &__columns {
+    display: none;
+    @include tablet {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      background-color: $Prospecta-primary-dark;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      padding: 0.25rem 1rem;
+      &-left {
+        display: flex;
+        justify-content: space-between;
+        width: 86%;
+      }
+    }
+  }
+
+  &__name,
+  &__contact,
+  &__details,
+  &__location,
+  &__actions {
+    color: $Prospecta-primary-light;
+  }
+
+  &__name {
+    width: 7rem;
+  }
+  &__contact {
+    width: 7rem;
+  }
+  &__details {
+    width: 7rem;
+  }
+  &__location {
+    width: 7rem;
+  }
+  &__actions {
+    width: 4.5rem;
+  }
+
   &__input {
     @include input-field;
     display: block;
     margin: 1rem 0;
     width: 100%;
+    @include tablet {
+      width: 10rem;
+    }
   }
 
   &__button {
     @include button-style;
     width: 100%;
+    @include tablet {
+      width: 10rem;
+    }
   }
 
   &__scroll-up {

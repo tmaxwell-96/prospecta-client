@@ -116,6 +116,17 @@ const CompanyList = () => {
       <Link to="/add-company">
         <button className="company-list__button">Add New Company</button>
       </Link>
+      <div className="company-list__columns">
+        <div className="company-list__columns-left">
+          <p className="company-list__name">Company Name</p>
+          <p className="company-list__contact">Main Contact</p>
+
+          <p className="company-list__details">Contact Details</p>
+          <p className="company-list__location">Location</p>
+        </div>
+
+        <p className="company-list__actions">Actions</p>
+      </div>
       <img
         onClick={handleScrollUp}
         className="company-list__scroll-up"
