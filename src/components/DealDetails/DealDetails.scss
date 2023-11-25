@@ -1,0 +1,19 @@
+@use "../../styles//partials/mixins" as *;
+@use "../../styles//partials/typography" as *;
+@use "../../styles//partials/variables" as *;
+
+.deal-details {
+  @include content-container;
+  &__description-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1rem;
+    margin-top: 1rem;
+    border-top: 2px solid $Prospecta-primary-border;
+  }
+
+  &__description-text {
+    align-self: flex-start;
+  }
+}

@@ -31,3 +31,16 @@
   border: 1px solid $Prospecta-primary-border;
   padding: 0.25rem 0.5rem;
 }
+
+@mixin content-container {
+  background-color: $Prospecta-primary-light;
+  border: 1px solid $Prospecta-primary-border;
+  border-radius: 8px;
+  box-shadow: 7px 10px 10px rgba($color: #000000, $alpha: 0.3);
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 1rem 0;
+}

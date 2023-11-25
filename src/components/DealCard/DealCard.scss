@@ -19,6 +19,11 @@
     display: flex;
   }
 
+  &__button {
+    @include button-style;
+    margin-top: 1rem;
+  }
+
   &__name {
     width: 100%;
     text-align: center;
@@ -32,9 +37,17 @@
   }
 
   &__edit {
-    margin: auto 0 0 auto;
     border: 1px solid $Prospecta-primary-border;
-    border-radius: 50px;
-    padding: 0.5rem;
+    border-radius: 50%;
+    padding: 0.25rem;
+
+    &-link {
+      margin: auto 0 0 auto;
+      height: 2rem;
+    }
+  }
+
+  &__delete {
+    margin: auto 0 0 1rem;
   }
 }

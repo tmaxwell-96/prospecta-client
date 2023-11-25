@@ -2,6 +2,12 @@
 @use "../../styles//partials/typography" as *;
 @use "../../styles//partials/variables" as *;
 
+.delete-deal {
+  &__button {
+    @include button-style;
+  }
+}
+
 .modal {
   background-color: white;
   opacity: 1;

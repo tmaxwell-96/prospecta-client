@@ -18,6 +18,7 @@ import LoginPage from "./Pages/LoginPage/LoginPage";
 import NotLoggedIn from "./components/NotLoggedIn/NotLoggedIn";
 import Signup from "./components/Signup/Signup";
 import Landing from "./components/Landing/Landing";
+import DealDetails from "./components/DealDetails/DealDetails";
 import axios from "axios";
 
 function NavigationComponent({ isLoggedIn, setIsLoggedIn }) {
@@ -69,6 +70,10 @@ function NavigationComponent({ isLoggedIn, setIsLoggedIn }) {
         <Route
           path="/deals"
           element={isLoggedIn ? <DealsList /> : <NotLoggedIn />}
+        />
+        <Route
+          path="/deals/:dealId"
+          element={isLoggedIn ? <DealDetails /> : <NotLoggedIn />}
         />
         <Route
           path="/add-company"

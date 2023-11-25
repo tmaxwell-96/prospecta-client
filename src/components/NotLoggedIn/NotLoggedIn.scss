@@ -1,0 +1,10 @@
+@use "../../styles//partials/mixins" as *;
+@use "../../styles//partials/typography" as *;
+@use "../../styles//partials/variables" as *;
+
+.not-logged-in {
+  &__button {
+    @include button-style;
+    margin-top: 2rem;
+  }
+}

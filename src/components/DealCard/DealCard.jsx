@@ -18,13 +18,14 @@ const StyledDealCard = styled.div`
 `;
 
 const DealCard = ({ deal, deleteDeal }) => {
+  const baseURL = process.env.REACT_APP_BASE_URL;
   const percentage = deal.percent_certainty;
   const certaintyNumber = percentage.replace(/%/g, "");
 
   return (
     <StyledDealCard className="fadeIn ">
       <section className="deal-card">
-        <h3 className="deal-card__name">{deal.deal_name}</h3>
+        <h2 className="deal-card__name">{deal.deal_name}</h2>
 
         <div className="deal-card__content">
           <div className="deal-card__content-lower">
@@ -45,10 +46,13 @@ const DealCard = ({ deal, deleteDeal }) => {
               <p className="deal-card__text">
                 {new Date(deal.expected_sale_date).toLocaleDateString()}
               </p>
+              <Link to={`/deals/${deal.id}`}>
+                <button className="deal-card__button">Full Details</button>
+              </Link>
             </div>
           </div>
-          <Link className="deal-card__edit" to={`/edit-deal/${deal.id}`}>
-            <img src={edit} alt="edit" />
+          <Link className="deal-card__edit-link" to={`/edit-deal/${deal.id}`}>
+            <img className="deal-card__edit" src={edit} alt="edit" />
           </Link>
           <div className="deal-card__delete">
             <DeleteDeal deleteDeal={deleteDeal} deal={deal} />

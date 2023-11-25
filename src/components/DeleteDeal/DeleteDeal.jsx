@@ -20,7 +20,9 @@ const DeleteDeal = ({ deal, deleteDeal }) => {
 
   return (
     <div>
-      <button onClick={openModal}>Delete</button>
+      <button className="delete-deal__button" onClick={openModal}>
+        Delete
+      </button>
       <Modal
         className={`modal`}
         isOpen={modalIsOpen}
