@@ -22,7 +22,7 @@ const DealCard = ({ deal, deleteDeal }) => {
   const certaintyNumber = percentage.replace(/%/g, "");
 
   return (
-    <StyledDealCard className="fadeIn">
+    <StyledDealCard className="fadeIn ">
       <section className="deal-card">
         <h3 className="deal-card__name">{deal.deal_name}</h3>
 

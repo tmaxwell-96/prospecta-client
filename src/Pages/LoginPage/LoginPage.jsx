@@ -1,26 +1,35 @@
 import "./LoginPage.scss";
 import { Link } from "react-router-dom";
+import "./LoginPage.scss";
 
 const LoginPage = ({ handleLogin }) => {
   return (
-    <section>
-      <h2>Login</h2>
-      {/* {isLoginError && <label style={{ color: "red" }}>{errorMessage}</label>} */}
-      <form onSubmit={handleLogin}>
-        <div className="form-group">
-          Username: <input type="text" name="username" />
+    <section className="login">
+      <h2 className="login__heading">Login</h2>
+      <form className="login-form" onSubmit={handleLogin}>
+        <div className="login-form-group">
+          Username:{" "}
+          <input className="login-form__input" type="text" name="username" />
         </div>
-        <div className="form-group">
-          Password: <input type="password" name="password" />
+        <div className="login-form-group">
+          Password:{" "}
+          <input
+            className="login-form__input"
+            type="password"
+            name="password"
+          />
         </div>
-        <button className="btn btn-primary" type="submit">
+        <button className="login-form__button" type="submit">
           Login
         </button>
+      </form>
+
+      <div className="login__new-user">
         <p>New User?</p>
         <Link to="/signup">
-          <button> Sign Up</button>
+          <button className="login-form__button"> Sign Up</button>
         </Link>
-      </form>
+      </div>
     </section>
   );
 };

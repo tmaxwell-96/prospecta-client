@@ -1,6 +1,12 @@
 import "./App.scss";
 import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useNavigate,
+  Link,
+} from "react-router-dom";
 import Header from "./components/Header/Header";
 import Nav from "./components/Nav/Nav";
 import CompanyList from "./components/CompanyList/CompanyList";
@@ -92,6 +98,7 @@ function App() {
     <div className="app">
       <BrowserRouter>
         <Header />
+
         {isLoggedIn && <Nav />}
         <NavigationComponent
           isLoggedIn={isLoggedIn}

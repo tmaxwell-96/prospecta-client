@@ -31,5 +31,10 @@ p {
 .app {
   &__content {
     background-color: $Prospecta-primary-mid;
+    padding: 1rem;
+  }
+
+  &__header {
+    text-decoration: none;
   }
 }

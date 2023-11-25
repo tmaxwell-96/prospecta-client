@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import DealCard from "../DealCard/DealCard";
 import GraphicalInfo from "../GraphicalInfo/GraphicalInfo";
 import styled from "styled-components";
+import scrollUp from "../../assets/icons/up-chevron.svg";
 
 const StyledDealsList = styled.section`
   .fadeIn {
@@ -38,6 +39,32 @@ const DealsList = () => {
   const [seachKeyword, setSearchKeyword] = useState("");
   const [starDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+
+  const handleScrollUp = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    const scrollButton = document.querySelector(".deal-list__scroll-up");
+
+    const handleScroll = () => {
+      if (window.scrollY > 200) {
+        // Show the scroll-up button when the user scrolls down
+        scrollButton.classList.add("visible");
+      } else {
+        // Hide the scroll-up button when the user is at the top
+        scrollButton.classList.remove("visible");
+      }
+    };
+
+    // Add scroll event listener
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const getDealList = useCallback(async () => {
     const response = await axios.get(`${baseURL}/deals`, {
@@ -135,6 +162,13 @@ const DealsList = () => {
         <input onBlur={handleEndDate} type="date" name="date" id="date" />
         <button onClick={handleSubmit}>Set Date Range</button>
       </form>
+
+      <img
+        onClick={handleScrollUp}
+        className="deal-list__scroll-up"
+        src={scrollUp}
+        alt="up chevron"
+      />
 
       <GraphicalInfo dealList={dealList} />
 
