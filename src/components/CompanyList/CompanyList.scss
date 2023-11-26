@@ -39,15 +39,19 @@
 
   &__name {
     width: 7rem;
+    gap: 0.5rem;
   }
   &__contact {
     width: 7rem;
+    gap: 0.5rem;
   }
   &__details {
     width: 7rem;
+    gap: 0.5rem;
   }
   &__location {
     width: 7rem;
+    gap: 0.5rem;
   }
   &__actions {
     width: 4.5rem;
@@ -83,6 +87,19 @@
     @include desktop {
       height: 2rem;
       right: 4rem;
+    }
+  }
+
+  &__sorting-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__sort-image {
+    height: 1rem;
+    &:hover {
+      background-color: $Prospecta-primary-cta;
+      border-radius: 4px;
     }
   }
 }

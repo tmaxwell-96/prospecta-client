@@ -130,5 +130,9 @@
 
   &__sort-image {
     height: 1rem;
+    &:hover {
+      background-color: $Prospecta-primary-cta;
+      border-radius: 4px;
+    }
   }
 }

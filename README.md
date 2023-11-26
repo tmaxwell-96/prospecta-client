@@ -1,22 +1,35 @@
 # Project Title
 
-Prospecta (Work in progress)
+Prospecta
 
 ## Overview
 
-What is your app? Brief description in a couple of sentences.
-
 Prospecta is a simple to use and easy to visualize sales pipeline navigator capable of helping users track sales expectations over time. Avoiding the cumbersome nature of other sales pipeline trackers, Prospecta will deliver clean visuals and data viewing options with minimal input requirements from sales professionals.
+
+## How to Start
+
+#### If Starting from github
+
+1. Download the main branch from both the client and backend repositories. Links are below.
+
+- https://github.com/tmaxwell-96/prospecta-client
+- https://github.com/tmaxwell-96/prospecta-backend
+
+2. Run NPM I on both folders to download node modules.
+
+3. Add a .env file to both the front and back end following the example.env files in each folder.
+
+4. Set up mySQL database and input DB details into backedn .env file
+
+5. run npx knex migrate:latest and npx knex seed:run to populate the DB with placeholder data if you choose. By default, the users table will not have any users.
+
+6. Use npm start to start front end, and node index.js to start the backend.
+
+7. Sign up as a user and sign in!
 
 ### Problem
 
 In my past roles I've had experience with two low-end CRM softwares with bugs, unclear displays, and difficult UIs. The result is that members of our sales team would often avoid inputting deals or prospects, as the time spent didn't seem worth the benefit. However, when reports were due, our team would then need to sort through extended periods of time for useful information. A tool that can easily take deal information with as few input fields as possible would aleviate this problem, and I believe this issue is felt by sales teams across a multitude of industries.
-
-### User Profile
-
-Who will use your app? How will they use it? Any special considerations that your app must take into account.
-
-My app will be geared towards both sales professionals or small businesses without a sales team, helping both track projected incoming sales and analyze past performance.
 
 ### Features
 
@@ -43,12 +56,6 @@ Further desired features will be added after this functionality and visual style
 - MySQL to store data.
 - I intend to use react-modal and charts.js libraries at a minimum for functionality and appearance.
 
-### APIs
-
-List any external sources of data that will be used in your app.
-
-I do not intend to use external APIs as the app is meant to function with user inputed data, unless I can find an API with the specific data points I need to demonstrate function. I intend to use chatGPT to get mockup data to populate the database initially.
-
 ### Sitemap
 
 List the pages of your app with brief descriptions. You can show this visually, or write it out.
@@ -58,53 +65,7 @@ Pages will be displayed dynamically using react. If all requirements below prove
 - Main page: displays users name and potentially highlights (top deals in the last month, top upcoming deals, top companies, etc.) Will have navigation to the deals, companies, or contacts pages in a nav bar or a side bar.
 - Deals page: Will default to a list of all deals across all companies. Columns will have sort features. Can click deal item to get further details. Can click on company to view company details. Will be a date selection function and a graphical representation button.
 - Companies page: similar to deals page, will list all companies, total value of deals associated. Can click on them to get further details. Can sort.
-- Contacts page: Will list all contacts with contact information. Click to view more details, sort to sort by relevent fields.
 - Graphical representation: Using chart.js, users will be able to view a chart based on selections on the deals page. May show a small graphical representation above the deals list as well.
-
-### Mockups
-
-Provide visuals of your app's screens. You can use tools like Figma or pictures of hand-drawn sketches.
-
-![Mobile list view](assets/mockups/mobile-list.jpg)
-
-![Mobile Single Item](assets/mockups/mobile-single-details.jpg)
-
-![Mobile Graphical View](assets/mockups/mobile-graphical.jpg)
-
-![Tablet View, all](assets/mockups/tablet.jpg)
-
-![Desktop view, all](assets/mockups/desktop.jpg)
-
-### Data
-
-I anticipate having at least 2 tables, potentially 3. Below are their details.
-
-Deals table with:
-
-- ID
-- Date added
-- Date updated
-- Date of expected transaction
-- Value
-- % certainty
-- weighted value
-- Company
-
-Companys table with:
-
-- Company name
-- Company deal value
-- Company next upcoming deal
-- Address
-- Main Contact
-- Within the specific company page may have a list of other contacts as well
-
-Contacts page with:
-
-- Contact name
-- Contact details
-- Company
-- Role
 
 ### Endpoints
 
@@ -114,16 +75,12 @@ List endpoints that your server will implement, including HTTP methods, paramete
 - GET for deals by company name
 - GET for dealy by date range
 - GET for all companies
-- GET for all contacts
-- GET for all contacts by company
 
 - POST for new deal
 - POST for new company
-- POST for new contact
 
 - PUT for new deal
 - PUT for new company
-- PUT for new contact
 
 - DELETE for new deal
 - DELETE for new company
@@ -131,33 +88,15 @@ List endpoints that your server will implement, including HTTP methods, paramete
 
 ### Auth
 
-Does your project include any login or user profile functionality? If so, describe how authentication/authorization will be implemented.
-
-Front end and back end Auth will be implemented similar to class, using JWT tokens.
-
-## Roadmap
-
-Scope your project as a sprint. Break down the tasks that will need to be completed and map out timeframes for implementation. Think about what you can reasonably complete before the due date. The more detail you provide, the easier it will be to build.
-
-- Initialize both front end and back end repositories and structure. Create develop branches. 30 mins
-- Create migration and seed files for DB with mock data. 1-2 hours.
-- Create partials with button, field, color, font, and breakpoints
-- Create back-end get requests for full lists of companies and deals. 1 hour.
-- Create minimalist front end lists of both components. Style for both mobile and generic wide. 1-2 hours.
-- Create post and put back end requests for deals and companies. 1-2 hours.
-- Create minimalist front end forms to handle all. 2-4 hours.
-- Create delete requests for deals and companies. Create front end modal to handle. 1-3 hours.
-- Create specific get requests/queries (by company, by date). 1-3 hours.
-- Create graphical representation page based on selected get requests. 3+ hours.
-- Repeat the above front and back end get, post, put, and delete for contacts.
-- Complete styling for all elements, making dynamic between breakpoints. 3+ hours
+Auth is performed using JWT tokens saved in session storage.
 
 ## Nice-to-haves
 
-Your project will be marked based on what you committed to in the above document. Under nice-to-haves, you can list any additional features you may complete if you have extra time, or after finishing.
+Further features to add:
 
 - Ability to search within pages for desired information like company, date, contact, etc.
 - TODO calendar showing deals by date.
 - Reminder function with automatic email?
 - Multiple logins and ability to assign companies to different users.
 - Minimal CRM features, ability to add notes, phone calls, and other details to companies and deals.
+- Contacts page, table, and crud operations

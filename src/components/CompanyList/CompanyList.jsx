@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import CompanyCard from "../CompanyCard/CompanyCard";
 import { Link } from "react-router-dom";
 import scrollUp from "../../assets/icons/up-chevron.svg";
+import downChevron from "../../assets/icons/down-chevron.svg";
 
 const CompanyList = () => {
   const token = sessionStorage.getItem("JWTtoken");
@@ -99,13 +100,28 @@ const CompanyList = () => {
     }
   };
 
+  //Sort Function
   const sortColumn = (columnName) => {
     const sortedList = [...companyList].sort((a, b) => {
+      if (a[columnName] > b[columnName]) {
+        return 1;
+      }
       if (a[columnName] < b[columnName]) {
         return -1;
       }
-      if (a[columnName] > b[columnName]) {
+      return 0;
+    });
+
+    setCompanyList(sortedList);
+  };
+
+  const sortColumnDescending = (columnName) => {
+    const sortedList = [...companyList].sort((a, b) => {
+      if (a[columnName] < b[columnName]) {
         return 1;
+      }
+      if (a[columnName] > b[columnName]) {
+        return -1;
       }
       return 0;
     });
@@ -128,31 +144,75 @@ const CompanyList = () => {
       </Link>
       <div className="company-list__columns">
         <div className="company-list__columns-left">
-          <p
-            onClick={() => sortColumn("company_name")}
-            className="company-list__name"
-          >
-            Company Name
-          </p>
-          <p
-            onClick={() => sortColumn("contact_name")}
-            className="company-list__contact"
-          >
-            Main Contact
-          </p>
-
-          <p
-            onClick={() => sortColumn("contact_email")}
-            className="company-list__details"
-          >
-            Contact Details
-          </p>
-          <p
-            onClick={() => sortColumn("city")}
-            className="company-list__location"
-          >
-            Location
-          </p>
+          <div className="company-list__name">
+            <p>Company Name</p>
+            <div className="company-list__sorting-container">
+              <img
+                className="company-list__sort-image"
+                src={scrollUp}
+                alt="up chevron"
+                onClick={() => sortColumn("company_name")}
+              />
+              <img
+                className="company-list__sort-image"
+                src={downChevron}
+                alt="down chevron"
+                onClick={() => sortColumnDescending("company_name")}
+              />
+            </div>
+          </div>
+          <div className="company-list__contact">
+            <p>Main Contact</p>
+            <div className="company-list__sorting-container">
+              <img
+                className="company-list__sort-image"
+                src={scrollUp}
+                alt="up chevron"
+                onClick={() => sortColumn("contact_name")}
+              />
+              <img
+                className="company-list__sort-image"
+                src={downChevron}
+                alt="down chevron"
+                onClick={() => sortColumnDescending("contact_name")}
+              />
+            </div>
+          </div>
+          <div className="company-list__details">
+            {" "}
+            <p>Contact Details</p>
+            <div className="company-list__sorting-container">
+              <img
+                className="company-list__sort-image"
+                src={scrollUp}
+                alt="up chevron"
+                onClick={() => sortColumn("contact_email")}
+              />
+              <img
+                className="company-list__sort-image"
+                src={downChevron}
+                alt="down chevron"
+                onClick={() => sortColumnDescending("contact_email")}
+              />
+            </div>
+          </div>
+          <div className="company-list__location">
+            <p>Location</p>
+            <div className="company-list__sorting-container">
+              <img
+                className="company-list__sort-image"
+                src={scrollUp}
+                alt="up chevron"
+                onClick={() => sortColumn("city")}
+              />
+              <img
+                className="company-list__sort-image"
+                src={downChevron}
+                alt="down chevron"
+                onClick={() => sortColumnDescending("city")}
+              />
+            </div>
+          </div>
         </div>
 
         <p className="company-list__actions">Actions</p>
