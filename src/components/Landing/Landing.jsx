@@ -1,8 +1,9 @@
 import "./Landing.scss";
-import DealCard from "../DealCard/DealCard";
+
 import axios from "axios";
 import { useState, useCallback, useEffect } from "react";
 import styled from "styled-components";
+import { formatNumberWithCommas } from "../../functions/functions";
 
 const StyledLanding = styled.section`
   .fadeIn {
@@ -55,12 +56,46 @@ const Landing = () => {
     return () => clearInterval(intervalId);
   }, [getSingleDeal]);
 
+  const percentage =
+    singleDeal.length > 0 ? singleDeal[0].percent_certainty : null;
+  const certaintyNumber = percentage ? percentage.replace(/%/g, "") : null;
+
   return (
     <StyledLanding className="landing">
       <h2>Deal Spotlight</h2>
 
       {singleDeal[0] && (
-        <DealCard key={singleDeal[0].id} deal={singleDeal[0]} />
+        <section className="deal-details">
+          <h2>{singleDeal[0].deal_name}</h2>
+          <div className="deal-details__info">
+            <p className="deal-details-card__label">Company Name</p>
+            <p className="deal-details-card__text">
+              {singleDeal[0].company_name}
+            </p>
+            <p className="deal-details-card__label">Expected Value</p>
+            <p className="deal-details-card__text">{`$${formatNumberWithCommas(
+              singleDeal[0].value
+            )}`}</p>
+            <p className="deal-details-card__label">Expected Certainty</p>
+            <p className="deal-details-card__text">
+              {singleDeal[0].percent_certainty}
+            </p>
+            <p className="deal-details-card__label">Weighted Value</p>
+            <p className="deal-details-card__text">{`$${formatNumberWithCommas(
+              Math.floor((Number(certaintyNumber) / 100) * singleDeal[0].value)
+            )}`}</p>
+            <p className="deal-details-card__label">Expected Sale Date</p>
+            <p className="deal-details-card__text">
+              {new Date(singleDeal[0].expected_sale_date).toLocaleDateString()}
+            </p>
+          </div>
+          <div className="deal-details__description-container">
+            <h2>Description:</h2>
+            <p className="deal-details__description-text">
+              {singleDeal[0].description}
+            </p>
+          </div>
+        </section>
       )}
     </StyledLanding>
   );

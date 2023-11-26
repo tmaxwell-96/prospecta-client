@@ -124,17 +124,25 @@ const AddEditCompany = () => {
 
   return (
     <section className="add-edit-company">
-      <h2 className="add-edit-company__heading">
-        {isEditMode ? `Edit ${formData.company_name}` : "Create a New Company"}
-      </h2>
-      <Link to="/companies">
-        <button>Go Back</button>
-      </Link>
+      <div className="add-edit-company__top">
+        <h2 className="add-edit-company__heading">
+          {isEditMode
+            ? `Edit ${formData.company_name}`
+            : "Create a New Company"}
+        </h2>
+        <Link to="/companies">
+          <button className="add-edit-company__button-top">Go Back</button>
+        </Link>
+      </div>
 
       <form onSubmit={handleSubmit} className="add-edit-company__form">
         <p className="add-edit-company__label">Company Name</p>
         <input
-          className="add-edit-company__input-text"
+          className={`add-edit-company__input-text ${
+            submitted && !formData.company_name
+              ? "add-edit-company__input-text--error"
+              : ""
+          }`}
           onChange={handleChange}
           value={formData.company_name}
           name="company_name"
@@ -148,7 +156,11 @@ const AddEditCompany = () => {
         {renderError(formData.company_name)}
         <p className="add-edit-company__label">Company Address</p>
         <input
-          className="add-edit-company__input-text"
+          className={`add-edit-company__input-text ${
+            submitted && !formData.address
+              ? "add-edit-company__input-text--error"
+              : ""
+          }`}
           type="text"
           name="address"
           onChange={handleChange}
@@ -160,7 +172,11 @@ const AddEditCompany = () => {
         {renderError(formData.address)}
         <p className="add-edit-company__label">City</p>
         <input
-          className="add-edit-company__input-text"
+          className={`add-edit-company__input-text ${
+            submitted && !formData.city
+              ? "add-edit-company__input-text--error"
+              : ""
+          }`}
           type="text"
           name="city"
           onChange={handleChange}
@@ -170,7 +186,11 @@ const AddEditCompany = () => {
         {renderError(formData.city)}
         <p className="add-edit-company__label">Country</p>
         <input
-          className="add-edit-company__input-text"
+          className={`add-edit-company__input-text ${
+            submitted && !formData.country
+              ? "add-edit-company__input-text--error"
+              : ""
+          }`}
           type="text"
           name="country"
           onChange={handleChange}
@@ -182,7 +202,11 @@ const AddEditCompany = () => {
         {renderError(formData.country)}
         <p className="add-edit-company__label">Main Contact</p>
         <input
-          className="add-edit-company__input-text"
+          className={`add-edit-company__input-text ${
+            submitted && !formData.contact_name
+              ? "add-edit-company__input-text--error"
+              : ""
+          }`}
           type="text"
           name="contact_name"
           onChange={handleChange}
@@ -196,7 +220,11 @@ const AddEditCompany = () => {
         {renderError(formData.contact_name)}
         <p className="add-edit-company__label">Contact Position</p>
         <input
-          className="add-edit-company__input-text"
+          className={`add-edit-company__input-text ${
+            submitted && !formData.contact_position
+              ? "add-edit-company__input-text--error"
+              : ""
+          }`}
           type="text"
           name="contact_position"
           onChange={handleChange}
@@ -210,7 +238,11 @@ const AddEditCompany = () => {
         {renderError(formData.contact_position)}
         <p className="add-edit-company__label">Contact Phone</p>
         <input
-          className="add-edit-company__input-text"
+          className={`add-edit-company__input-text ${
+            submitted && !formData.contact_phone
+              ? "add-edit-company__input-text--error"
+              : ""
+          }`}
           type="text"
           name="contact_phone"
           onChange={handleChange}
@@ -224,7 +256,11 @@ const AddEditCompany = () => {
         {renderError(formData.contact_phone)}
         <p className="add-edit-company__label">Contact Email</p>
         <input
-          className="add-edit-company__input-text"
+          className={`add-edit-company__input-text ${
+            submitted && !formData.contact_email
+              ? "add-edit-company__input-text--error"
+              : ""
+          }`}
           type="text"
           name="contact_email"
           onChange={handleChange}
@@ -236,7 +272,7 @@ const AddEditCompany = () => {
           }
         />
         {renderError(formData.contact_email)}
-        <button className="add-edit-company__button">{`${
+        <button className="add-edit-company__button-bottom">{`${
           isEditMode ? "Update Company" : "Create Company"
         }`}</button>
       </form>

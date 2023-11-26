@@ -25,14 +25,17 @@
   }
 
   &__content-container {
-    display: flex;
-    width: 86%;
-    justify-content: space-between;
+    @include tablet {
+      display: flex;
+      width: 86%;
+      justify-content: space-between;
+    }
   }
 
   &__button {
     @include button-style;
     margin-top: 1rem;
+    background-color: $Prospecta-primary-cta;
     &--mobile {
       display: inline-block;
       @include tablet {
@@ -43,7 +46,7 @@
       display: none;
       @include tablet {
         display: inline-block;
-        margin: 0;
+        margin: 2rem 0 0 0;
         align-self: center;
       }
     }
@@ -142,5 +145,8 @@
 
   &__delete {
     margin: auto 0 0 1rem;
+    @include tablet {
+      margin: 0;
+    }
   }
 }

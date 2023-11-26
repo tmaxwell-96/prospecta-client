@@ -11,9 +11,18 @@
     padding-top: 1rem;
     margin-top: 1rem;
     border-top: 2px solid $Prospecta-primary-border;
+    width: 100%;
   }
 
   &__description-text {
     align-self: flex-start;
+    margin-top: 1rem;
+  }
+
+  &-card {
+    &__label {
+      color: $Prospecta-primary-light-text;
+      margin: 1rem 0 0 0;
+    }
   }
 }

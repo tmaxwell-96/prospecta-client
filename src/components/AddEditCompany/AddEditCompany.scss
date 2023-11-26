@@ -1,8 +1,43 @@
+@use "../../styles//partials/mixins" as *;
+@use "../../styles//partials/typography" as *;
+@use "../../styles//partials/variables" as *;
+
 .add-edit-company {
+  margin-top: 2rem;
   &__error-field {
     display: none;
     &--displayed {
-      display: inline-block;
+      display: block;
+      margin-bottom: 0.5rem;
+      color: $Prospecta-primary-cta;
     }
+  }
+  &__label {
+    margin-top: 1rem;
+  }
+
+  &__top {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  &__input-text {
+    @include input-field;
+    width: 50%;
+
+    &--error {
+      border: 1px solid $Prospecta-primary-cta;
+    }
+  }
+
+  &__button-top,
+  &__button-bottom {
+    @include button-style;
+  }
+
+  &__button-bottom {
+    display: block;
+    margin: 2rem auto 0 auto;
   }
 }

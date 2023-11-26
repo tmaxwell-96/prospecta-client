@@ -38,20 +38,20 @@ const DealDetails = () => {
     <section className="deal-details">
       <h2>{dealInfo.deal_name}</h2>
       <div className="deal-details__info">
-        <p className="deal-card__label">Company Name</p>
-        <p className="deal-card__text">{dealInfo.company_name}</p>
-        <p className="deal-card__label">Expected Value</p>
-        <p className="deal-card__text">{`$${formatNumberWithCommas(
+        <p className="deal-details-card__label">Company Name</p>
+        <p className="deal-details-card__text">{dealInfo.company_name}</p>
+        <p className="deal-details-card__label">Expected Value</p>
+        <p className="deal-details-card__text">{`$${formatNumberWithCommas(
           dealInfo.value
         )}`}</p>
-        <p className="deal-card__label">Expected Certainty</p>
-        <p className="deal-card__text">{dealInfo.percent_certainty}</p>
-        <p className="deal-card__label">Weighted Value</p>
-        <p className="deal-card__text">{`$${formatNumberWithCommas(
+        <p className="deal-details-card__label">Expected Certainty</p>
+        <p className="deal-details-card__text">{dealInfo.percent_certainty}</p>
+        <p className="deal-details-card__label">Weighted Value</p>
+        <p className="deal-details-card__text">{`$${formatNumberWithCommas(
           Math.floor((Number(certaintyNumber) / 100) * dealInfo.value)
         )}`}</p>
-        <p className="deal-card__label">Expected Sale Date</p>
-        <p className="deal-card__text">
+        <p className="deal-details-card__label">Expected Sale Date</p>
+        <p className="deal-details-card__text">
           {new Date(dealInfo.expected_sale_date).toLocaleDateString()}
         </p>
       </div>

@@ -39,7 +39,7 @@ const CompanyCard = ({ company, deleteCompany }) => {
         <div className="company-card__actions">
           <Link
             className="company-card__edit-link"
-            to={`/edit-deal/${company.id}`}
+            to={`/edit-company/${company.id}`}
           >
             <img className="company-card__edit" src={edit} alt="edit" />
           </Link>
