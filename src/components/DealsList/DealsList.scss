@@ -19,6 +19,69 @@
     width: 100%;
   }
 
+  &__top {
+    @include tablet {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+  }
+
+  &__left {
+    @include tablet {
+      align-self: flex-end;
+    }
+  }
+
+  &__right {
+    @include tablet {
+      border-left: 2px solid $Prospecta-primary-border;
+      padding-left: 1rem;
+    }
+  }
+
+  &__columns {
+    display: none;
+    @include tablet {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      background-color: $Prospecta-primary-dark;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      padding: 0.25rem 1rem;
+      &-left {
+        display: flex;
+        justify-content: space-between;
+        width: 86%;
+      }
+    }
+  }
+
+  &__company-name,
+  &__deal-name,
+  &__expected,
+  &__weighted,
+  &__actions {
+    color: $Prospecta-primary-light;
+  }
+
+  &__company-name {
+    width: 7rem;
+  }
+  &__deal-name {
+    width: 7rem;
+  }
+  &__expected {
+    width: 7rem;
+  }
+  &__weighted {
+    width: 7rem;
+  }
+  &__actions {
+    width: 4.5rem;
+  }
+
   &__add-button {
     @include button-style;
     width: 100%;

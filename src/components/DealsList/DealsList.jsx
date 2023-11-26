@@ -145,39 +145,43 @@ const DealsList = () => {
   return (
     <StyledDealsList className="deal-list">
       <h2 className="deal-list__header">Deals</h2>
-      <input
-        className="deal-list__input"
-        onChange={handleSearch}
-        name="search"
-        type="text"
-        placeholder="Search Company"
-      />
-      <Link to="/add-deal">
-        <button className="deal-list__add-button">Add new Deal</button>
-      </Link>
+      <div className="deal-list__top">
+        <div className="deal-list__left">
+          <input
+            className="deal-list__input"
+            onChange={handleSearch}
+            name="search"
+            type="text"
+            placeholder="Search Deal"
+          />
+          <Link to="/add-deal">
+            <button className="deal-list__add-button">Add new Deal</button>
+          </Link>
+        </div>
 
-      <form action="">
-        <h3 className="deal-list__header">Date Range</h3>
-        <p>From:</p>
-        <input
-          className="deal-list__date-input"
-          onBlur={handleStartDate}
-          type="date"
-          name="date"
-          id="date"
-        />
-        <p>To:</p>
-        <input
-          className="deal-list__date-input"
-          onBlur={handleEndDate}
-          type="date"
-          name="date"
-          id="date"
-        />
-        <button className="deal-list__date-button" onClick={handleSubmit}>
-          Set Date Range
-        </button>
-      </form>
+        <form className="deal-list__right">
+          <h3 className="deal-list__header">Date Range</h3>
+          <p>From:</p>
+          <input
+            className="deal-list__date-input"
+            onBlur={handleStartDate}
+            type="date"
+            name="date"
+            id="date"
+          />
+          <p>To:</p>
+          <input
+            className="deal-list__date-input"
+            onBlur={handleEndDate}
+            type="date"
+            name="date"
+            id="date"
+          />
+          <button className="deal-list__date-button" onClick={handleSubmit}>
+            Set Date Range
+          </button>
+        </form>
+      </div>
 
       <img
         onClick={handleScrollUp}
@@ -187,6 +191,21 @@ const DealsList = () => {
       />
 
       <GraphicalInfo dealList={dealList} />
+
+      <div className="deal-list__columns">
+        <div className="deal-list__columns-left">
+          <p className="deal-list__deal-name">Deal Name</p>
+
+          <p className="deal-list__company-name">Company Name</p>
+          <p className="deal-list__expected">Expected Value, Certainty</p>
+
+          <p className="deal-list__weighted">
+            Weighted Value, Expected Sale Date
+          </p>
+        </div>
+
+        <p className="deal-list__actions">Actions</p>
+      </div>
 
       <div className="deal-list__container">
         {dealList.map((deal) => {

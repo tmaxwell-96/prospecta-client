@@ -27,7 +27,7 @@ const CompanyCard = ({ company, deleteCompany }) => {
             <p className="company-card__text">{company.contact_email}</p>
           </div>
 
-          <div className="company-card__details">
+          <div className="company-card__location">
             <p className="company-card__label">Address</p>
             <p className="company-card__text">{company.address}</p>
             <p className="company-card__label">City</p>
