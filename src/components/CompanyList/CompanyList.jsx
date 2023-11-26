@@ -103,6 +103,20 @@ const CompanyList = () => {
     }
   };
 
+  const sortColumn = (columnName) => {
+    const sortedList = [...companyList].sort((a, b) => {
+      if (a[columnName] < b[columnName]) {
+        return -1;
+      }
+      if (a[columnName] > b[columnName]) {
+        return 1;
+      }
+      return 0;
+    });
+
+    setCompanyList(sortedList);
+  };
+
   return (
     <section className="company-list">
       <h2 className="company-list__header">Company List</h2>
@@ -118,11 +132,31 @@ const CompanyList = () => {
       </Link>
       <div className="company-list__columns">
         <div className="company-list__columns-left">
-          <p className="company-list__name">Company Name</p>
-          <p className="company-list__contact">Main Contact</p>
+          <p
+            onClick={() => sortColumn("company_name")}
+            className="company-list__name"
+          >
+            Company Name
+          </p>
+          <p
+            onClick={() => sortColumn("contact_name")}
+            className="company-list__contact"
+          >
+            Main Contact
+          </p>
 
-          <p className="company-list__details">Contact Details</p>
-          <p className="company-list__location">Location</p>
+          <p
+            onClick={() => sortColumn("contact_email")}
+            className="company-list__details"
+          >
+            Contact Details
+          </p>
+          <p
+            onClick={() => sortColumn("city")}
+            className="company-list__location"
+          >
+            Location
+          </p>
         </div>
 
         <p className="company-list__actions">Actions</p>

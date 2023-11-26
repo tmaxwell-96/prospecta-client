@@ -33,6 +33,8 @@
   &__location,
   &__actions {
     color: $Prospecta-primary-light;
+    display: flex;
+    align-items: center;
   }
 
   &__name {

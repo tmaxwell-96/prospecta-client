@@ -93,16 +93,29 @@ const DealsList = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    // Check if both startDate and endDate are empty
+    if (!starDate && !endDate) {
+      // If both are empty, fetch all deals
+      getDealList();
+      return;
+    }
+
     const dateRange = {
       startDate: starDate,
       endDate: endDate,
     };
-    const response = await axios.post(`${baseURL}/search`, dateRange, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    setDealList(response.data);
+
+    try {
+      const response = await axios.post(`${baseURL}/search`, dateRange, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setDealList(response.data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const deleteDeal = async (event) => {
@@ -142,6 +155,22 @@ const DealsList = () => {
     }
   }, [baseURL, seachKeyword, getDealList, token]);
 
+  //Sort Function
+
+  const sortColumn = (columnName) => {
+    const sortedList = [...dealList].sort((a, b) => {
+      if (a[columnName] < b[columnName]) {
+        return -1;
+      }
+      if (a[columnName] > b[columnName]) {
+        return 1;
+      }
+      return 0;
+    });
+
+    setDealList(sortedList);
+  };
+
   return (
     <StyledDealsList className="deal-list">
       <h2 className="deal-list__header">Deals</h2>
@@ -161,22 +190,26 @@ const DealsList = () => {
 
         <form className="deal-list__right">
           <h3 className="deal-list__header">Date Range</h3>
-          <p>From:</p>
-          <input
-            className="deal-list__date-input"
-            onBlur={handleStartDate}
-            type="date"
-            name="date"
-            id="date"
-          />
-          <p>To:</p>
-          <input
-            className="deal-list__date-input"
-            onBlur={handleEndDate}
-            type="date"
-            name="date"
-            id="date"
-          />
+          <label htmlFor="startDate">
+            <p>From:</p>
+            <input
+              className="deal-list__date-input"
+              onBlur={handleStartDate}
+              type="date"
+              name="startDate"
+              id="startDate"
+            />
+          </label>
+          <label htmlFor="endDate">
+            <p>To:</p>
+            <input
+              className="deal-list__date-input"
+              onBlur={handleEndDate}
+              type="date"
+              name="endDate"
+              id="endDate"
+            />
+          </label>
           <button className="deal-list__date-button" onClick={handleSubmit}>
             Set Date Range
           </button>
@@ -194,12 +227,30 @@ const DealsList = () => {
 
       <div className="deal-list__columns">
         <div className="deal-list__columns-left">
-          <p className="deal-list__deal-name">Deal Name</p>
+          <p
+            onClick={() => sortColumn("deal_name")}
+            className="deal-list__deal-name"
+          >
+            Deal Name
+          </p>
 
-          <p className="deal-list__company-name">Company Name</p>
-          <p className="deal-list__expected">Expected Value, Certainty</p>
+          <p
+            onClick={() => sortColumn("company_name")}
+            className="deal-list__company-name"
+          >
+            Company Name
+          </p>
+          <p
+            onClick={() => sortColumn("value")}
+            className="deal-list__expected"
+          >
+            Expected Value, Certainty
+          </p>
 
-          <p className="deal-list__weighted">
+          <p
+            onClick={() => sortColumn("expected_sale_date")}
+            className="deal-list__weighted"
+          >
             Weighted Value, Expected Sale Date
           </p>
         </div>

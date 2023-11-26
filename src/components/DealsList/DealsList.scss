@@ -64,6 +64,8 @@
   &__weighted,
   &__actions {
     color: $Prospecta-primary-light;
+    display: flex;
+    align-items: center;
   }
 
   &__company-name {

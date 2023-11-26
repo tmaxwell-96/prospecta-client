@@ -69,7 +69,7 @@ const AddEditDeal = () => {
           );
         };
         changeDeal();
-        alert("Deal updated! Returning to companies page.");
+        alert("Deal updated! Returning to deals page.");
         navigate("/deals");
       } else {
         const postDeal = async () => {
@@ -149,17 +149,23 @@ const AddEditDeal = () => {
 
   return (
     <section className="add-edit-deal">
-      <h2 className="add-edit-deal__heading">
-        {isEditMode ? `Edit ${formData.deal_name}` : "Create a New Deal"}
-      </h2>
-      <Link to="/deals">
-        <button>Go Back</button>
-      </Link>
+      <div className="add-edit-deal__top">
+        <h2 className="add-edit-deal__heading">
+          {isEditMode ? `Edit ${formData.deal_name}` : "Create a New Deal"}
+        </h2>
+        <Link to="/deals">
+          <button className="add-edit-deal__button-top">Go Back</button>
+        </Link>
+      </div>
 
       <form onSubmit={handleSubmit} className="add-edit-deal__form">
         <p className="add-edit-deal__label">Deal Name</p>
         <input
-          className="add-edit-deal__input-text"
+          className={`add-edit-deal__input-text ${
+            submitted && !formData.deal_name
+              ? "add-edit-deal__input-text--error"
+              : ""
+          }`}
           onChange={handleChange}
           value={formData.deal_name}
           name="deal_name"
@@ -171,7 +177,11 @@ const AddEditDeal = () => {
         {renderError(formData.deal_name)}
         <p className="add-edit-deal__label">Deal Description</p>
         <input
-          className="add-edit-deal__input-text"
+          className={`add-edit-deal__input-text ${
+            submitted && !formData.description
+              ? "add-edit-deal__input-text--error"
+              : ""
+          }`}
           type="text"
           name="description"
           onChange={handleChange}
@@ -185,7 +195,11 @@ const AddEditDeal = () => {
         {renderError(formData.description)}
         <p className="add-edit-deal__label">Value</p>
         <input
-          className="add-edit-deal__input-text"
+          className={`add-edit-deal__input-text ${
+            submitted && !formData.value
+              ? "add-edit-deal__input-text--error"
+              : ""
+          }`}
           type="text"
           name="value"
           onChange={handleChange}
@@ -197,7 +211,11 @@ const AddEditDeal = () => {
         {renderError(formData.value)}
         <p className="add-edit-deal__label">Percentage Certainty</p>
         <input
-          className="add-edit-deal__input-text"
+          className={`add-edit-deal__input-text ${
+            submitted && !formData.percent_certainty
+              ? "add-edit-deal__input-text--error"
+              : ""
+          }`}
           type="text"
           name="percent_certainty"
           onChange={handleChange}
@@ -211,7 +229,11 @@ const AddEditDeal = () => {
         {renderError(formData.percent_certainty)}
         <p className="add-edit-deal__label">Expected Sale Date</p>
         <input
-          className="add-edit-deal__input-text"
+          className={`add-edit-deal__input-text ${
+            submitted && !formData.expected_sale_date
+              ? "add-edit-deal__input-text--error"
+              : ""
+          }`}
           type="text"
           name="expected_sale_date"
           onChange={handleChange}
@@ -228,6 +250,11 @@ const AddEditDeal = () => {
           name="company_id"
           onChange={handleChange}
           value={formData.company_id}
+          className={`add-edit-deal__input-text ${
+            submitted && !formData.company_name
+              ? "add-edit-deal__input-text--error"
+              : ""
+          }`}
         >
           <option value="">
             {isEditMode ? `${formData.company_name}` : `Please Select`}
@@ -243,7 +270,7 @@ const AddEditDeal = () => {
 
         {renderError(formData.company_id)}
 
-        <button className="add-edit-deal__button">{`${
+        <button className="add-edit-deal__button-bottom">{`${
           isEditMode ? "Update Deal" : "Create Deal"
         }`}</button>
       </form>
