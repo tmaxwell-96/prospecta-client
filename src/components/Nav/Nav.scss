@@ -33,7 +33,8 @@
   }
 
   @include desktop {
-    padding: 0 0 0 2rem;
+    // padding: 0 0 0 2rem;
+    width: 10rem;
   }
 
   &__link {
@@ -48,6 +49,10 @@
       padding: 0.5rem 0.5rem;
       display: flex;
       align-items: center;
+    }
+
+    @include desktop {
+      padding: 0.5rem 0.5rem 0.5rem 2rem;
     }
 
     &:hover {

@@ -7,6 +7,7 @@ import DealCard from "../DealCard/DealCard";
 import GraphicalInfo from "../GraphicalInfo/GraphicalInfo";
 import styled from "styled-components";
 import scrollUp from "../../assets/icons/up-chevron.svg";
+import downChevron from "../../assets/icons/down-chevron.svg";
 
 const StyledDealsList = styled.section`
   .fadeIn {
@@ -155,11 +156,25 @@ const DealsList = () => {
 
   const sortColumn = (columnName) => {
     const sortedList = [...dealList].sort((a, b) => {
+      if (a[columnName] > b[columnName]) {
+        return 1;
+      }
       if (a[columnName] < b[columnName]) {
         return -1;
       }
-      if (a[columnName] > b[columnName]) {
+      return 0;
+    });
+
+    setDealList(sortedList);
+  };
+
+  const sortColumnDescending = (columnName) => {
+    const sortedList = [...dealList].sort((a, b) => {
+      if (a[columnName] < b[columnName]) {
         return 1;
+      }
+      if (a[columnName] > b[columnName]) {
+        return -1;
       }
       return 0;
     });
@@ -223,32 +238,75 @@ const DealsList = () => {
 
       <div className="deal-list__columns">
         <div className="deal-list__columns-left">
-          <p
-            onClick={() => sortColumn("deal_name")}
-            className="deal-list__deal-name"
-          >
-            Deal Name
-          </p>
+          <div className="deal-list__deal-name">
+            <p>Deal Name</p>
+            <div className="deal-list__sorting-container">
+              <img
+                className="deal-list__sort-image"
+                src={scrollUp}
+                alt="up chevron"
+                onClick={() => sortColumn("deal_name")}
+              />
+              <img
+                className="deal-list__sort-image"
+                src={downChevron}
+                alt="down chevron"
+                onClick={() => sortColumnDescending("deal_name")}
+              />
+            </div>
+          </div>
 
-          <p
-            onClick={() => sortColumn("company_name")}
-            className="deal-list__company-name"
-          >
-            Company Name
-          </p>
-          <p
-            onClick={() => sortColumn("value")}
-            className="deal-list__expected"
-          >
-            Expected Value, Certainty
-          </p>
-
-          <p
-            onClick={() => sortColumn("expected_sale_date")}
-            className="deal-list__weighted"
-          >
-            Weighted Value, Expected Sale Date
-          </p>
+          <div className="deal-list__company-name">
+            <p>Company Name</p>
+            <div className="deal-list__sorting-container">
+              <img
+                className="deal-list__sort-image"
+                src={scrollUp}
+                alt="up chevron"
+                onClick={() => sortColumn("company_name")}
+              />
+              <img
+                className="deal-list__sort-image"
+                src={downChevron}
+                alt="down chevron"
+                onClick={() => sortColumnDescending("company_name")}
+              />
+            </div>
+          </div>
+          <div className="deal-list__expected">
+            <p>Expected Value, Certainty</p>
+            <div className="deal-list__sorting-container">
+              <img
+                className="deal-list__sort-image"
+                src={scrollUp}
+                alt="up chevron"
+                onClick={() => sortColumn("value")}
+              />
+              <img
+                className="deal-list__sort-image"
+                src={downChevron}
+                alt="down chevron"
+                onClick={() => sortColumnDescending("value")}
+              />
+            </div>
+          </div>
+          <div className="deal-list__weighted">
+            <p>Weighted Value, Expected Sale Date</p>
+            <div className="deal-list__sorting-container">
+              <img
+                className="deal-list__sort-image"
+                src={scrollUp}
+                alt="up chevron"
+                onClick={() => sortColumn("expected_sale_date")}
+              />
+              <img
+                className="deal-list__sort-image"
+                src={downChevron}
+                alt="down chevron"
+                onClick={() => sortColumnDescending("expected_sale_date")}
+              />
+            </div>
+          </div>
         </div>
 
         <p className="deal-list__actions">Actions</p>
