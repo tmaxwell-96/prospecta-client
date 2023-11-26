@@ -110,7 +110,7 @@ const AddEditCompany = () => {
       }
     };
     getformData();
-  }, [baseURL, companyId]);
+  }, [baseURL, companyId, isEditMode, token]);
 
   const renderError = (label) => (
     <div

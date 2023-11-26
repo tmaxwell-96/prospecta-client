@@ -1,7 +1,7 @@
 import "./AddEditDeal.scss";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 const AddEditDeal = () => {
   const token = sessionStorage.getItem("JWTtoken");
@@ -111,7 +111,7 @@ const AddEditDeal = () => {
       }
     };
     getformData();
-  }, [baseURL, dealId]);
+  }, [baseURL, dealId, isEditMode, token]);
 
   const renderError = (label) => (
     <div
@@ -125,27 +125,34 @@ const AddEditDeal = () => {
 
   //Get list of companies
 
-  const getCompanyList = async () => {
-    const response = await axios.get(`${baseURL}/companies`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    const allCompanies = response.data.map((singleCompany) => {
-      return singleCompany;
-    });
-    const uniqueCompanies = [];
-    allCompanies.forEach((uniqueCompany) => {
-      if (uniqueCompanies.indexOf(uniqueCompany) === -1) {
-        uniqueCompanies.push(uniqueCompany);
-      }
-    });
-    setCompanyList(uniqueCompanies);
-  };
+  const getCompanyList = useCallback(async () => {
+    try {
+      const response = await axios.get(`${baseURL}/companies`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const allCompanies = response.data.map((singleCompany) => {
+        return singleCompany;
+      });
+
+      const uniqueCompanies = [];
+      allCompanies.forEach((uniqueCompany) => {
+        if (uniqueCompanies.indexOf(uniqueCompany) === -1) {
+          uniqueCompanies.push(uniqueCompany);
+        }
+      });
+
+      setCompanyList(uniqueCompanies);
+    } catch (error) {
+      console.error(error);
+    }
+  }, [baseURL, token]);
 
   useEffect(() => {
     getCompanyList();
-  }, []);
+  }, [getCompanyList]);
 
   return (
     <section className="add-edit-deal">

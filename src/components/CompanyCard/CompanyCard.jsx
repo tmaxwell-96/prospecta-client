@@ -1,6 +1,5 @@
 import "./CompanyCard.scss";
 import edit from "../../assets/icons/edit-24px-white.svg";
-import DeleteDeal from "../DeleteDeal/DeleteDeal";
 import { Link } from "react-router-dom";
 import DeleteCompany from "../DeleteCompany/DeleteCompany";
 

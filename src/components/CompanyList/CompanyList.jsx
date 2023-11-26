@@ -16,23 +16,19 @@ const CompanyList = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  //Scroll to top function
   useEffect(() => {
     const scrollButton = document.querySelector(".company-list__scroll-up");
 
     const handleScroll = () => {
       if (window.scrollY > 200) {
-        // Show the scroll-up button when the user scrolls down
         scrollButton.classList.add("visible");
       } else {
-        // Hide the scroll-up button when the user is at the top
         scrollButton.classList.remove("visible");
       }
     };
 
-    // Add scroll event listener
     window.addEventListener("scroll", handleScroll);
-
-    // Clean up the event listener on component unmount
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -52,7 +48,7 @@ const CompanyList = () => {
         `There was an issue communicating with the server, please try again later. Error: ${error}`
       );
     }
-  }, [baseURL]);
+  }, [baseURL, token]);
 
   //Search function
 
@@ -83,7 +79,7 @@ const CompanyList = () => {
     } else {
       getCompanyList();
     }
-  }, [baseURL, seachKeyword, getCompanyList]);
+  }, [baseURL, seachKeyword, getCompanyList, token]);
 
   useEffect(() => {
     getCompanyList();

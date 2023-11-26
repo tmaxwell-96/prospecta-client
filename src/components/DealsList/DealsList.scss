@@ -112,5 +112,10 @@
     position: fixed;
     top: 5rem;
     right: 0rem;
+
+    @include desktop {
+      height: 2rem;
+      right: 4rem;
+    }
   }
 }

@@ -57,44 +57,46 @@ const Signup = () => {
   return (
     <section className="signup">
       <h2 className="signup__heading">Sign Up</h2>
-      <form className="signup-form" onSubmit={handleSignup}>
-        <div className="login-form-group">
-          Username:{" "}
-          <input
-            onChange={handleChange}
-            value={formData.username}
-            className="login-form__input"
-            type="text"
-            name="username"
-          />
-          {renderError(formData.username)}
-        </div>
-        <div className="login-form-group">
-          Name:{" "}
-          <input
-            onChange={handleChange}
-            value={formData.name}
-            className="login-form__input"
-            type="text"
-            name="name"
-          />
-          {renderError(formData.name)}
-        </div>
-        <div className="login-form-group">
-          Password:{" "}
-          <input
-            onChange={handleChange}
-            value={formData.password}
-            className="login-form__input"
-            type="password"
-            name="password"
-          />
-          {renderError(formData.password)}
-        </div>
-        <button className="login-form__button" type="submit">
-          Signup
-        </button>
-      </form>
+      <div className="signup-form__wrapper">
+        <form className="signup-form" onSubmit={handleSignup}>
+          <div className="signup-form-group">
+            Username:{" "}
+            <input
+              onChange={handleChange}
+              value={formData.username}
+              className="signup-form__input"
+              type="text"
+              name="username"
+            />
+            {renderError(formData.username)}
+          </div>
+          <div className="signup-form-group">
+            Name:{" "}
+            <input
+              onChange={handleChange}
+              value={formData.name}
+              className="signup-form__input"
+              type="text"
+              name="name"
+            />
+            {renderError(formData.name)}
+          </div>
+          <div className="signup-form-group">
+            Password:{" "}
+            <input
+              onChange={handleChange}
+              value={formData.password}
+              className="signup-form__input"
+              type="password"
+              name="password"
+            />
+            {renderError(formData.password)}
+          </div>
+          <button className="signup-form__button" type="submit">
+            Signup
+          </button>
+        </form>
+      </div>
 
       <div className="signup__existing-user">
         <p>Already a User?</p>

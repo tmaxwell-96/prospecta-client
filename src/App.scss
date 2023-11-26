@@ -43,6 +43,9 @@ p {
     @include tablet {
       margin-left: 5rem;
     }
+    @include desktop {
+      padding: 8rem;
+    }
 
     &-wrapper {
       padding: 1rem;

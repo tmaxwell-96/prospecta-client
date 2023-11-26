@@ -4,8 +4,6 @@ import { useState, useEffect } from "react";
 import moment from "moment";
 
 const GraphicalInfo = ({ dealList }) => {
-  //Graph State
-
   const dataPoints = dealList.map((deal) => ({
     x: deal.expected_sale_date,
     y: deal.value * (Number(deal.percent_certainty.replace(/%/g, "")) / 100),
@@ -27,7 +25,6 @@ const GraphicalInfo = ({ dealList }) => {
       }
     });
 
-    // Convert the object into an array of objects
     const resultArray = Object.entries(monthlySum).map(([month, value]) => ({
       month,
       value,
@@ -42,8 +39,6 @@ const GraphicalInfo = ({ dealList }) => {
 
   if (actualData.month) {
   }
-
-  //Graph Testing
 
   const [graphData, setGraphData] = useState({
     labels: actualData.map((data) =>
@@ -75,6 +70,7 @@ const GraphicalInfo = ({ dealList }) => {
         },
       ],
     });
+    // eslint-disable-next-line
   }, [dealList]);
 
   return (

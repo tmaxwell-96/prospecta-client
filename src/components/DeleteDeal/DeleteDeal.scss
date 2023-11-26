@@ -15,11 +15,11 @@
   height: 100%;
   padding: 1rem;
 
-  //   @include tablet {
-  //     background-color: rgba(19, 24, 44, 0.7);
-  //     display: flex;
-  //     justify-content: center;
-  //   }
+  @include tablet {
+    background-color: rgba(19, 24, 44, 0.7);
+    display: flex;
+    justify-content: center;
+  }
 
   &__wrapper {
     background-color: white;
@@ -29,12 +29,12 @@
     border-radius: 4px;
     height: 100%;
 
-    // @include tablet {
-    //   width: 42rem;
-    //   height: 16rem;
-    //   margin-top: 10rem;
-    //   padding: 2rem;
-    // }
+    @include tablet {
+      width: 42rem;
+      height: 16rem;
+      margin-top: 10rem;
+      padding: 2rem;
+    }
   }
 
   &__close {
@@ -56,17 +56,17 @@
 
     width: 100%;
 
-    // @include tablet {
-    //   justify-content: flex-end;
-    // }
+    @include tablet {
+      justify-content: flex-end;
+    }
   }
 
   &__cancel,
   &__delete {
-    @include button-style // @include tablet {
-      //   padding: 0.5rem 1rem;
-      // }
-;
+    @include button-style;
+    @include tablet {
+      padding: 0.5rem 1rem;
+    }
   }
 
   &__delete {
@@ -77,8 +77,8 @@
   &__cancel {
     @include button-style;
 
-    // @include tablet {
-    //   margin-right: 1rem;
-    // }
+    @include tablet {
+      margin-right: 1rem;
+    }
   }
 }

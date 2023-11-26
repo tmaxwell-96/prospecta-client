@@ -22,15 +22,12 @@ const DealDetails = () => {
       setDealInfo(response.data[0]);
     };
     getDealById();
-  }, []);
+  }, [baseURL, dealId, token]);
 
-  // Check if dealInfo.deal_name exists
   if (!dealInfo.deal_name) {
-    // Deal info doesn't exist, return null or fallback UI
     return null;
   }
 
-  // Deal info exists, continue with rendering
   const percentage = dealInfo.percent_certainty;
   const certaintyNumber = percentage.replace(/%/g, "");
 

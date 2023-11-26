@@ -49,18 +49,14 @@ const DealsList = () => {
 
     const handleScroll = () => {
       if (window.scrollY > 200) {
-        // Show the scroll-up button when the user scrolls down
         scrollButton.classList.add("visible");
       } else {
-        // Hide the scroll-up button when the user is at the top
         scrollButton.classList.remove("visible");
       }
     };
 
-    // Add scroll event listener
     window.addEventListener("scroll", handleScroll);
 
-    // Clean up the event listener on component unmount
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };

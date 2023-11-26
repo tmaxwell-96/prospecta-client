@@ -1,12 +1,6 @@
 import "./App.scss";
 import { useState, useEffect } from "react";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  useNavigate,
-  Link,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Nav from "./components/Nav/Nav";
 import CompanyList from "./components/CompanyList/CompanyList";
@@ -37,7 +31,7 @@ function NavigationComponent({ isLoggedIn, setIsLoggedIn }) {
       navigate("/home");
     } catch (error) {
       setIsLoggedIn(false);
-      console.error("Username or password not recognized", error);
+      alert("Username or password not recognized");
     }
   };
 
@@ -51,7 +45,7 @@ function NavigationComponent({ isLoggedIn, setIsLoggedIn }) {
       }
     };
     checkLogin();
-  }, []);
+  }, [setIsLoggedIn]);
 
   return (
     <div className="app__content">
