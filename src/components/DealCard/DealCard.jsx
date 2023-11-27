@@ -18,7 +18,6 @@ const StyledDealCard = styled.div`
 `;
 
 const DealCard = ({ deal, deleteDeal }) => {
-  const baseURL = process.env.REACT_APP_BASE_URL;
   const percentage = deal.percent_certainty;
   const certaintyNumber = percentage.replace(/%/g, "");
 

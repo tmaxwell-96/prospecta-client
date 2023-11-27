@@ -8,7 +8,7 @@ import DealsList from "./components/DealsList/DealsList";
 import AddEditCompany from "./components/AddEditCompany/AddEditCompany";
 import Footer from "./components/Footer/Footer";
 import AddEditDeal from "./components/AddEditDeal/AddEditDeal";
-import LoginPage from "./Pages/LoginPage/LoginPage";
+import Login from "./components/Login/Login";
 import NotLoggedIn from "./components/NotLoggedIn/NotLoggedIn";
 import Signup from "./components/Signup/Signup";
 import Landing from "./components/Landing/Landing";
@@ -51,7 +51,7 @@ function NavigationComponent({ isLoggedIn, setIsLoggedIn }) {
     <div className="app__content">
       <Routes>
         <Route path="/signup" element={<Signup />} />
-        <Route path="/" element={<LoginPage handleLogin={handleLogin} />} />
+        <Route path="/" element={<Login handleLogin={handleLogin} />} />
         <Route path="/error" element={<NotLoggedIn />} />
         <Route
           path="/home"

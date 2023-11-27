@@ -1,8 +1,7 @@
-import "./LoginPage.scss";
 import { Link } from "react-router-dom";
-import "./LoginPage.scss";
+import "./Login.scss";
 
-const LoginPage = ({ handleLogin }) => {
+const Login = ({ handleLogin }) => {
   return (
     <section className="login">
       <h2 className="login__heading">Login</h2>
@@ -36,4 +35,4 @@ const LoginPage = ({ handleLogin }) => {
   );
 };
 
-export default LoginPage;
+export default Login;
