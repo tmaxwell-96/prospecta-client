@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Modal from "react-modal";
 import DeleteDeal from "../DeleteDeal/DeleteDeal";
 import styled from "styled-components";
+import moment from "moment";
 
 Modal.setAppElement("#root");
 
@@ -51,7 +52,7 @@ const DealCard = ({ deal, deleteDeal }) => {
               )}`}</p>
               <p className="deal-card__label">Expected Sale Date</p>
               <p className="deal-card__text">
-                {new Date(deal.expected_sale_date).toLocaleDateString()}
+                {moment(deal.expected_sale_date).format("MM/DD/YYYY")}{" "}
               </p>
             </div>
 
