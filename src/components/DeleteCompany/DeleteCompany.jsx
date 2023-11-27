@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import "./DeleteCompany.scss";
-import axios from "axios";
 
 Modal.setAppElement("#root");
 
 const DeleteCompany = ({ company, deleteCompany }) => {
-  const baseURL = process.env.REACT_APP_BASE_URL;
   const [modalIsOpen, setIsOpen] = useState(false);
-  const token = sessionStorage.getItem("JWTtoken");
 
   function openModal() {
     setIsOpen(true);
