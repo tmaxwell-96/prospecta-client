@@ -20,6 +20,8 @@ function NavigationComponent({
   setIsLoggedIn,
   submitted,
   setSubmitted,
+  errorMessage,
+  setErrorMessage,
 }) {
   const baseURL = process.env.REACT_APP_BASE_URL;
   const navigate = useNavigate();
@@ -37,7 +39,7 @@ function NavigationComponent({
       navigate("/home");
     } catch (error) {
       setIsLoggedIn(false);
-      alert("Username or password not recognized");
+      setErrorMessage("Username or password not recognized");
     }
   };
 
@@ -64,6 +66,7 @@ function NavigationComponent({
               submitted={submitted}
               isLoggedIn={isLoggedIn}
               handleLogin={handleLogin}
+              errorMessage={errorMessage}
             />
           }
         />
@@ -108,6 +111,7 @@ function NavigationComponent({
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   return (
     <div className="app">
@@ -120,6 +124,8 @@ function App() {
             setIsLoggedIn={setIsLoggedIn}
             submitted={submitted}
             setSubmitted={setSubmitted}
+            errorMessage={errorMessage}
+            setErrorMessage={setErrorMessage}
           />
         </div>
 

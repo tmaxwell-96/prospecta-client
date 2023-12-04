@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import DonutSpinner from "../DonutSpinner/DonutSpinner";
 import "./Login.scss";
 
-const Login = ({ handleLogin, isLoggedIn, submitted }) => {
+const Login = ({ handleLogin, isLoggedIn, submitted, errorMessage }) => {
   console.log(isLoggedIn);
   console.log(`submitted:`, submitted);
   return (
@@ -23,7 +23,7 @@ const Login = ({ handleLogin, isLoggedIn, submitted }) => {
             />
           </div>
           <button className="login-form__button" type="submit">
-            Login
+            {submitted ? "Logging in..." : "Login"}
           </button>
         </form>
       </div>
@@ -34,8 +34,9 @@ const Login = ({ handleLogin, isLoggedIn, submitted }) => {
           <button className="login-form__button"> Sign Up</button>
         </Link>
       </div>
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
       <div className="login__donut-container">
-        {!isLoggedIn && submitted ? <DonutSpinner /> : ""}
+        {submitted ? <DonutSpinner /> : ""}
       </div>
     </section>
   );
