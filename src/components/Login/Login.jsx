@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
+import DonutSpinner from "../DonutSpinner/DonutSpinner";
 import "./Login.scss";
 
-const Login = ({ handleLogin }) => {
+const Login = ({ handleLogin, isLoggedIn, submitted }) => {
+  console.log(isLoggedIn);
+  console.log(`submitted:`, submitted);
   return (
     <section className="login">
       <h2 className="login__heading">Login</h2>
@@ -30,6 +33,9 @@ const Login = ({ handleLogin }) => {
         <Link to="/signup">
           <button className="login-form__button"> Sign Up</button>
         </Link>
+      </div>
+      <div className="login__donut-container">
+        {!isLoggedIn && submitted ? <DonutSpinner /> : ""}
       </div>
     </section>
   );

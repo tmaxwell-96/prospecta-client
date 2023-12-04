@@ -15,7 +15,12 @@ import Landing from "./components/Landing/Landing";
 import DealDetails from "./components/DealDetails/DealDetails";
 import axios from "axios";
 
-function NavigationComponent({ isLoggedIn, setIsLoggedIn }) {
+function NavigationComponent({
+  isLoggedIn,
+  setIsLoggedIn,
+  submitted,
+  setSubmitted,
+}) {
   const baseURL = process.env.REACT_APP_BASE_URL;
   const navigate = useNavigate();
 
@@ -27,6 +32,7 @@ function NavigationComponent({ isLoggedIn, setIsLoggedIn }) {
         password: event.target.password.value,
       });
       sessionStorage.setItem("JWTtoken", response.data.token);
+      setSubmitted(true);
       setIsLoggedIn(true);
       navigate("/home");
     } catch (error) {
@@ -51,7 +57,16 @@ function NavigationComponent({ isLoggedIn, setIsLoggedIn }) {
     <div className="app__content">
       <Routes>
         <Route path="/signup" element={<Signup />} />
-        <Route path="/" element={<Login handleLogin={handleLogin} />} />
+        <Route
+          path="/"
+          element={
+            <Login
+              submitted={submitted}
+              isLoggedIn={isLoggedIn}
+              handleLogin={handleLogin}
+            />
+          }
+        />
         <Route path="/error" element={<NotLoggedIn />} />
         <Route
           path="/home"
@@ -92,6 +107,7 @@ function NavigationComponent({ isLoggedIn, setIsLoggedIn }) {
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   return (
     <div className="app">
@@ -102,6 +118,8 @@ function App() {
           <NavigationComponent
             isLoggedIn={isLoggedIn}
             setIsLoggedIn={setIsLoggedIn}
+            submitted={submitted}
+            setSubmitted={setSubmitted}
           />
         </div>
 

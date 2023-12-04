@@ -8,6 +8,7 @@ import GraphicalInfo from "../GraphicalInfo/GraphicalInfo";
 import styled from "styled-components";
 import scrollUp from "../../assets/icons/up-chevron.svg";
 import downChevron from "../../assets/icons/down-chevron.svg";
+import DonutSpinner from "../DonutSpinner/DonutSpinner";
 
 const StyledDealsList = styled.section`
   .fadeIn {
@@ -233,8 +234,13 @@ const DealsList = () => {
         src={scrollUp}
         alt="up chevron"
       />
-
-      <GraphicalInfo dealList={dealList} />
+      {!dealList.length ? (
+        <div className="deal-list__donut-container">
+          <DonutSpinner />
+        </div>
+      ) : (
+        <GraphicalInfo dealList={dealList} />
+      )}
 
       <div className="deal-list__columns">
         <div className="deal-list__columns-left">

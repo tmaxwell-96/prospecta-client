@@ -2,6 +2,7 @@ import "./Signup.scss";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
+import DonutSpinner from "../DonutSpinner/DonutSpinner";
 
 const Signup = () => {
   const baseURL = process.env.REACT_APP_BASE_URL;
@@ -49,7 +50,7 @@ const Signup = () => {
         });
         navigate("/");
       } catch (error) {
-        console.error(error);
+        alert("Error communicating with the server, please try again later");
       }
     }
   };
@@ -103,6 +104,9 @@ const Signup = () => {
         <Link to="/">
           <button className="signup__button"> Login</button>
         </Link>
+      </div>
+      <div className="signup__donut-container">
+        {submitted ? <DonutSpinner /> : ""}
       </div>
     </section>
   );

@@ -5,6 +5,7 @@ import CompanyCard from "../CompanyCard/CompanyCard";
 import { Link } from "react-router-dom";
 import scrollUp from "../../assets/icons/up-chevron.svg";
 import downChevron from "../../assets/icons/down-chevron.svg";
+import DonutSpinner from "../DonutSpinner/DonutSpinner";
 
 const CompanyList = () => {
   const token = sessionStorage.getItem("JWTtoken");
@@ -142,6 +143,13 @@ const CompanyList = () => {
       <Link to="/add-company">
         <button className="company-list__button">Add New Company</button>
       </Link>
+      {!companyList.length ? (
+        <div className="company-list__donut-container">
+          <DonutSpinner />
+        </div>
+      ) : (
+        ""
+      )}
       <div className="company-list__columns">
         <div className="company-list__columns-left">
           <div className="company-list__name">
