@@ -28,17 +28,17 @@ function NavigationComponent({
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    setSubmitted(true);
     try {
+      setSubmitted(true);
       const response = await axios.post(`${baseURL}/login`, {
         username: event.target.username.value,
         password: event.target.password.value,
       });
       sessionStorage.setItem("JWTtoken", response.data.token);
-      setSubmitted(true);
       setIsLoggedIn(true);
       navigate("/home");
     } catch (error) {
+      setSubmitted(false);
       setIsLoggedIn(false);
       setErrorMessage("Username or password not recognized");
     }
