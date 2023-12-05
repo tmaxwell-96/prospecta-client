@@ -85,6 +85,7 @@ const CompanyList = () => {
 
   useEffect(() => {
     getCompanyList();
+    window.scrollTo(0, 0);
   }, [getCompanyList]);
 
   //Delete company

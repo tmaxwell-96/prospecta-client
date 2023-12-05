@@ -50,6 +50,7 @@ const DealsList = () => {
 
   useEffect(() => {
     getDealList();
+    window.scrollTo(0, 0);
   }, [getDealList]);
 
   const handleSearch = (event) => {
@@ -67,9 +68,7 @@ const DealsList = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Check if both startDate and endDate are empty
     if (!starDate && !endDate) {
-      // If both are empty, fetch all deals
       getDealList();
       return;
     }

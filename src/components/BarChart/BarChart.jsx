@@ -10,41 +10,41 @@ function BarChart({ chartData }) {
       x: {
         title: {
           display: true,
-          text: "Month", // Set your X-axis label text
-          color: "#3e4147", // Set the color of the X-axis label
+          text: "Month",
+          color: "#3e4147",
           font: {
-            weight: 700, // Set the desired font weight
+            weight: 700,
             size: 12,
           },
         },
         grid: {
-          display: false, // Set to false to hide the X-axis grid lines
+          display: false,
         },
       },
       y: {
-        position: "top", // Set the Y-axis position to "top"
+        position: "top",
         title: {
           display: true,
-          text: "Value, $", // Set your Y-axis label text
-          color: "#3e4147", // Set the color of the Y-axis label
+          text: "Value, $",
+          color: "#3e4147",
           font: {
-            weight: 700, // Set the desired font weight
+            weight: 700,
             size: 12,
           },
         },
         grid: {
-          display: false, // Set to false to hide the Y-axis grid lines
+          display: false,
         },
       },
     },
     layout: {
       padding: {
-        top: 10, // Adjust top padding as needed
+        top: 10,
         bottom: 0,
       },
     },
-    maintainAspectRatio: false, // Set to false to control the height directly
-    responsive: true, // Make sure the chart is responsive
+    maintainAspectRatio: false,
+    responsive: true,
     plugins: {
       legend: {
         display: false,
@@ -53,7 +53,7 @@ function BarChart({ chartData }) {
   };
 
   // Set the height of the chart directly
-  const chartHeight = 400; // Replace with your desired height
+  const chartHeight = 400;
 
   return (
     <div className="barchart">

@@ -28,12 +28,15 @@ function NavigationComponent({
 
   const handleLogin = async (event) => {
     event.preventDefault();
+
     try {
       setSubmitted(true);
+
       const response = await axios.post(`${baseURL}/login`, {
         username: event.target.username.value,
         password: event.target.password.value,
       });
+
       sessionStorage.setItem("JWTtoken", response.data.token);
       setIsLoggedIn(true);
       navigate("/home");
@@ -42,6 +45,7 @@ function NavigationComponent({
       setIsLoggedIn(false);
       setErrorMessage("Username or password not recognized");
     }
+    setSubmitted(false);
   };
 
   useEffect(() => {
@@ -60,6 +64,7 @@ function NavigationComponent({
     <div className="app__content">
       <Routes>
         <Route path="/signup" element={<Signup />} />
+
         <Route
           path="/"
           element={
@@ -71,39 +76,24 @@ function NavigationComponent({
             />
           }
         />
-        <Route path="/error" element={<NotLoggedIn />} />
-        <Route
-          path="/home"
-          element={isLoggedIn ? <Landing /> : <NotLoggedIn />}
-        />
-        <Route
-          path="/companies"
-          element={isLoggedIn ? <CompanyList /> : <NotLoggedIn />}
-        />
-        <Route
-          path="/deals"
-          element={isLoggedIn ? <DealsList /> : <NotLoggedIn />}
-        />
-        <Route
-          path="/deals/:dealId"
-          element={isLoggedIn ? <DealDetails /> : <NotLoggedIn />}
-        />
-        <Route
-          path="/add-company"
-          element={isLoggedIn ? <AddEditCompany /> : <NotLoggedIn />}
-        />
-        <Route
-          path="/add-deal"
-          element={isLoggedIn ? <AddEditDeal /> : <NotLoggedIn />}
-        />
-        <Route
-          path="/edit-company/:companyId"
-          element={isLoggedIn ? <AddEditCompany /> : <NotLoggedIn />}
-        />
-        <Route
-          path="/edit-deal/:dealId"
-          element={isLoggedIn ? <AddEditDeal /> : <NotLoggedIn />}
-        />
+
+        {!isLoggedIn && <Route path="/error" element={<NotLoggedIn />} />}
+        {isLoggedIn && <Route path="/home" element={<Landing />} />}
+        {isLoggedIn && <Route path="/companies" element={<CompanyList />} />}
+        {isLoggedIn && <Route path="/deals" element={<DealsList />} />}
+        {isLoggedIn && (
+          <Route path="/deals/:dealId" element={<DealDetails />} />
+        )}
+        {isLoggedIn && (
+          <Route path="/add-company" element={<AddEditCompany />} />
+        )}
+        {isLoggedIn && <Route path="/add-deal" element={<AddEditDeal />} />}
+        {isLoggedIn && (
+          <Route path="/edit-company/:companyId" element={<AddEditCompany />} />
+        )}
+        {isLoggedIn && (
+          <Route path="/edit-deal/:dealId" element={<AddEditDeal />} />
+        )}
       </Routes>
     </div>
   );
@@ -117,7 +107,7 @@ function App() {
   return (
     <div className="app">
       <BrowserRouter>
-        <Header />
+        <Header setIsLoggedIn={setIsLoggedIn} />
         <div className="app__content-wrapper">
           {isLoggedIn && <Nav />}
           <NavigationComponent
@@ -129,7 +119,6 @@ function App() {
             setErrorMessage={setErrorMessage}
           />
         </div>
-
         <Footer />
       </BrowserRouter>
     </div>

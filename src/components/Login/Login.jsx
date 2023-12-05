@@ -1,8 +1,15 @@
 import { Link } from "react-router-dom";
 import DonutSpinner from "../DonutSpinner/DonutSpinner";
+import { useState, useEffect } from "react";
 import "./Login.scss";
 
-const Login = ({ handleLogin, isLoggedIn, submitted, errorMessage }) => {
+const Login = ({ handleLogin, submitted, errorMessage }) => {
+  const [isSubmitted, setIsSubmitted] = useState(submitted); // Use a local state for 'submitted'
+
+  useEffect(() => {
+    setIsSubmitted(submitted);
+  }, [submitted]);
+
   return (
     <section className="login">
       <h2 className="login__heading">Login</h2>
@@ -32,9 +39,11 @@ const Login = ({ handleLogin, isLoggedIn, submitted, errorMessage }) => {
           <button className="login-form__button"> Sign Up</button>
         </Link>
       </div>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+      {errorMessage && isSubmitted && (
+        <p className="error-message">{errorMessage}</p>
+      )}
       <div className="login__donut-container">
-        {submitted ? <DonutSpinner /> : ""}
+        {isSubmitted ? <DonutSpinner /> : ""}
       </div>
     </section>
   );

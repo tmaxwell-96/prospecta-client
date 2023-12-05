@@ -3,6 +3,9 @@
 @use "../../styles//partials/variables" as *;
 
 .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: $Prospecta-primary-mid;
   padding: 1rem 1rem 0 1rem;
   @include tablet {
@@ -23,5 +26,11 @@
     align-items: center;
     gap: 0.5rem;
     max-width: max-content;
+  }
+
+  &__logout {
+    @include button-style;
+    font-size: 0.75rem;
+    padding: 0.25rem;
   }
 }

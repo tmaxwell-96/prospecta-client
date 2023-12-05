@@ -39,20 +39,16 @@ const Landing = () => {
       }
     } catch (error) {
       console.error("Error fetching deals:", error);
-      // Handle error if needed
     }
   }, [baseURL, token]);
 
   useEffect(() => {
-    // Initial call
     getSingleDeal();
 
-    // Set up interval to call every 10 seconds
     const intervalId = setInterval(() => {
       getSingleDeal();
     }, 7000);
 
-    // Clear interval on component unmount
     return () => clearInterval(intervalId);
   }, [getSingleDeal]);
 
