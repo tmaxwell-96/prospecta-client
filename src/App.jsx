@@ -28,6 +28,7 @@ function NavigationComponent({
 
   const handleLogin = async (event) => {
     event.preventDefault();
+    setSubmitted(true);
     try {
       const response = await axios.post(`${baseURL}/login`, {
         username: event.target.username.value,

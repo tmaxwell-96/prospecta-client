@@ -1,0 +1,31 @@
+@use "../../styles//partials/mixins" as *;
+@use "../../styles//partials/typography" as *;
+@use "../../styles//partials/variables" as *;
+
+.landing {
+  &__progress-bar-container {
+    margin: 2rem auto;
+    width: 25rem;
+    height: 1.5rem;
+    background-color: $Prospecta-primary-light;
+    overflow: hidden;
+    border: 1px solid $Prospecta-primary-border;
+    border-radius: 20px;
+  }
+
+  &__progress-bar {
+    width: 0;
+    height: 100%;
+    background-color: $Prospecta-primary-cta;
+    animation: fillProgressBar 7s linear forwards infinite;
+  }
+
+  @keyframes fillProgressBar {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+}
