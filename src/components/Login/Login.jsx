@@ -3,8 +3,6 @@ import DonutSpinner from "../DonutSpinner/DonutSpinner";
 import "./Login.scss";
 
 const Login = ({ handleLogin, isLoggedIn, submitted, errorMessage }) => {
-  console.log(isLoggedIn);
-  console.log(`submitted:`, submitted);
   return (
     <section className="login">
       <h2 className="login__heading">Login</h2>

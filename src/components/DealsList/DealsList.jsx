@@ -5,34 +5,9 @@ import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import DealCard from "../DealCard/DealCard";
 import GraphicalInfo from "../GraphicalInfo/GraphicalInfo";
-import styled from "styled-components";
 import scrollUp from "../../assets/icons/up-chevron.svg";
 import downChevron from "../../assets/icons/down-chevron.svg";
 import DonutSpinner from "../DonutSpinner/DonutSpinner";
-
-const StyledDealsList = styled.section`
-  .fadeIn {
-    animation: fadeInAnimation 1s ease-in-out;
-  }
-
-  @keyframes fadeInAnimation {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-`;
-
-const StyledDealCard = styled.div`
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-
-  &.fadeIn {
-    opacity: 1;
-  }
-`;
 
 const DealsList = () => {
   const token = sessionStorage.getItem("JWTtoken");
@@ -184,7 +159,7 @@ const DealsList = () => {
   };
 
   return (
-    <StyledDealsList className="deal-list">
+    <div className="deal-list">
       <h2 className="deal-list__header">Deals</h2>
       <div className="deal-list__top">
         <div className="deal-list__left">
@@ -319,15 +294,18 @@ const DealsList = () => {
       </div>
 
       <div className="deal-list__container">
-        {dealList.map((deal) => {
+        {dealList.map((deal, index) => {
           return (
-            <StyledDealCard key={deal.id} className="fadeIn">
-              <DealCard deleteDeal={deleteDeal} deal={deal} />
-            </StyledDealCard>
+            <DealCard
+              key={deal.id}
+              index={index}
+              deleteDeal={deleteDeal}
+              deal={deal}
+            />
           );
         })}
       </div>
-    </StyledDealsList>
+    </div>
   );
 };
 

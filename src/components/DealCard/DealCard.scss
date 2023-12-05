@@ -18,6 +18,10 @@
     border-radius: 0;
   }
 
+  &__alternate-background {
+    background-color: $Prospecta-secondary-light;
+  }
+
   &__content {
     width: 100%;
     display: flex;

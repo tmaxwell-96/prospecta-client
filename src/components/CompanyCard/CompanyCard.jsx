@@ -3,9 +3,13 @@ import edit from "../../assets/icons/edit-24px-white.svg";
 import { Link } from "react-router-dom";
 import DeleteCompany from "../DeleteCompany/DeleteCompany";
 
-const CompanyCard = ({ company, deleteCompany }) => {
+const CompanyCard = ({ company, deleteCompany, index }) => {
   return (
-    <section className="company-card">
+    <section
+      className={`company-card ${
+        index % 2 === 1 ? "company-card__alternate-background" : ""
+      }`}
+    >
       <h2 className="company-card__name">{company.company_name}</h2>
 
       <div className="company-card__content">

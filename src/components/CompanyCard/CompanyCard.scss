@@ -20,6 +20,10 @@
     padding: 0.5rem 1rem;
   }
 
+  &__alternate-background {
+    background-color: $Prospecta-secondary-light;
+  }
+
   &__text {
     @include tablet {
       width: 7rem;

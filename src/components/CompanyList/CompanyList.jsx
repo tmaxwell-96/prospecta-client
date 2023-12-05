@@ -232,12 +232,13 @@ const CompanyList = () => {
         alt="up chevron"
       />
       <div className="company-list__container">
-        {companyList.map((company) => {
+        {companyList.map((company, index) => {
           return (
             <CompanyCard
               key={company.id}
               deleteCompany={deleteCompany}
               company={company}
+              index={index}
             />
           );
         })}

@@ -64,12 +64,12 @@ const Landing = () => {
     <StyledLanding className="landing">
       <h2>Deal Spotlight</h2>
 
-      <div class="landing__progress-bar-container">
-        <div class="landing__progress-bar"></div>
+      <div className="landing__progress-bar-container">
+        <div className="landing__progress-bar"></div>
       </div>
 
       {singleDeal[0] && (
-        <section className="deal-details">
+        <section className="landing__deal-details">
           <h2>{singleDeal[0].deal_name}</h2>
           <div className="deal-details__info">
             <p className="deal-details-card__label">Company Name</p>
