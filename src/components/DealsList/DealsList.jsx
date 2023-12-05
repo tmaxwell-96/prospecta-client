@@ -123,7 +123,7 @@ const DealsList = () => {
         getDealList();
       }
     } catch (error) {
-      alert(`Error communicating with server. Error: ${error}`);
+      alert(`Error communicating with server. `);
     }
   }, [baseURL, seachKeyword, getDealList, token]);
 

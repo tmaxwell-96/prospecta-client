@@ -47,7 +47,7 @@ const CompanyList = () => {
       setCompanyList(response.data);
     } catch (error) {
       alert(
-        `There was an issue communicating with the server, please try again later. Error: ${error}`
+        `There was an issue communicating with the server, please try again later.`
       );
     }
   }, [baseURL, token]);
@@ -72,7 +72,7 @@ const CompanyList = () => {
         setCompanyList(response.data);
       } catch (error) {
         alert(
-          `There was an issue communicating with the server, please try again later. Error : ${error}`
+          `There was an issue communicating with the server, please try again later. `
         );
       }
     };
