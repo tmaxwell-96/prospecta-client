@@ -12,6 +12,7 @@ Prospecta is a simple to use and easy to visualize sales pipeline navigator capa
 
 - Visit the following link: https://prospecta.netlify.app/;
 - Please note that the server may take several seconds to make the signup or login request at startup. After this time, requests will be immediate.
+- Demo the site with username: demoUser and password demo
 - Signup with a username or password, then sign in!
 
 #### If Starting from github
@@ -41,13 +42,36 @@ In my past roles I've had experience with two low-end CRM softwares with bugs, u
 
 List the functionality that your app will include. These can be written as user stories or descriptions with related details. Do not describe _how_ these features are implemented, only _what_ needs to be implemented.
 
-The base features of the app I expect to implement are:
+The base features of the app are:
 
 - A secure login
+  <br/>
+  <br/>
+  <div style="text-align: center;">
+    <img src="./src/assets/screenshots/login-screenshot.png?raw=true" alt="login" width="500" height="300" />
+  </div>
+  <br/>
+  <br/>
 - Ability to view all deals in one list.
 - Ability to sort this list by relevent fields (date created, projected date, value, position in the pipeline, etc.)
 - Ability to see a list of deals over varying periods, past or present. Should be dynamic, allowing users to choose things like coming month, coming six months, coming year, or a selected amount of time.
+  <br/>
+  <br/>
+  <div style="text-align: center;">
+    <img src="./src/assets/screenshots/search-screenshot.png?raw=true" alt="search" width="500" height="300" />
+  </div>
+  <br/>
+  <br/>
 - Graphical representation of the above mentioned lists to allow users to visually understand sales projections and performance.
+  <br/>
+  <br/>
+    <div style="text-align: center;">
+      <img src="./src/assets/screenshots/graph-screenshot.png?raw=true" alt="graph" width="500" height="300" />
+    </div>
+
+  <br/>
+  <br/>
+
 - Individual pages for company information where users can view and input information like address, contact information, and contacts.
 - All above will be created in a full-stack application. I will allow CRUD operations on the data. This means adding, editing, and deleting deals and companies.
 
