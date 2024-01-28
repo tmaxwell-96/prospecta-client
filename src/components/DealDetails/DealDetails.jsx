@@ -11,7 +11,8 @@ const DealDetails = () => {
   const token = sessionStorage.getItem("JWTtoken");
   const { dealId } = useParams();
 
-  // Get deal info by Id
+  //Get Deal Info by ID
+  //----------------------------
   useEffect(() => {
     const getDealById = async () => {
       const response = await axios.get(`${baseURL}/deals/${dealId}`, {

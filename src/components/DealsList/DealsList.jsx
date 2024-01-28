@@ -17,6 +17,9 @@ const DealsList = () => {
   const [starDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
+  //Scroll to Top Function
+  //----------------------------
+
   const handleScrollUp = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -39,6 +42,9 @@ const DealsList = () => {
     };
   }, []);
 
+  //Get List of Deal
+  //----------------------------
+
   const getDealList = useCallback(async () => {
     const response = await axios.get(`${baseURL}/deals`, {
       headers: {
@@ -51,6 +57,9 @@ const DealsList = () => {
   useEffect(() => {
     getDealList();
     window.scrollTo(0, 0);
+
+    //Search by Date Function
+    //----------------------------
   }, [getDealList]);
 
   const handleSearch = (event) => {
@@ -90,6 +99,9 @@ const DealsList = () => {
     }
   };
 
+  //Delete Deal
+  //----------------------------
+
   const deleteDeal = async (event) => {
     try {
       await axios.delete(`${baseURL}/deals/${event}`, {
@@ -102,6 +114,9 @@ const DealsList = () => {
       console.error(error);
     }
   };
+
+  //Search by Keyword Function
+  //----------------------------
 
   useEffect(() => {
     try {
@@ -128,6 +143,7 @@ const DealsList = () => {
   }, [baseURL, seachKeyword, getDealList, token]);
 
   //Sort Function
+  //----------------------------
 
   const sortColumn = (columnName) => {
     const sortedList = [...dealList].sort((a, b) => {

@@ -18,7 +18,8 @@ const CompanyList = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  //Scroll to top function
+  //Scroll to Top Function
+  //----------------------------
   useEffect(() => {
     const scrollButton = document.querySelector(".company-list__scroll-up");
 
@@ -36,7 +37,8 @@ const CompanyList = () => {
     };
   }, []);
 
-  //Get list of companies
+  //Get List of Companies
+  //----------------------------
   const getCompanyList = useCallback(async () => {
     try {
       const response = await axios.get(`${baseURL}/companies`, {
@@ -52,7 +54,8 @@ const CompanyList = () => {
     }
   }, [baseURL, token]);
 
-  //Search function
+  //Search Function
+  //----------------------------
 
   const handleSearch = (event) => {
     setSearchKeyword(event.target.value);
@@ -88,7 +91,8 @@ const CompanyList = () => {
     window.scrollTo(0, 0);
   }, [getCompanyList]);
 
-  //Delete company
+  //Delete Company
+  //----------------------------
   const deleteCompany = async (event) => {
     try {
       await axios.delete(`${baseURL}/companies/${event}`, {
@@ -103,6 +107,7 @@ const CompanyList = () => {
   };
 
   //Sort Function
+  //----------------------------
   const sortColumn = (columnName) => {
     const sortedList = [...companyList].sort((a, b) => {
       if (a[columnName] > b[columnName]) {

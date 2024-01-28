@@ -9,6 +9,9 @@ const GraphicalInfo = ({ dealList }) => {
     y: deal.value * (Number(deal.percent_certainty.replace(/%/g, "")) / 100),
   }));
 
+  //Sum Values by Month
+  //----------------------------
+
   function sumYValuesByMonth(dataArray) {
     const monthlySum = {};
 

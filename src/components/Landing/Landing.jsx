@@ -25,6 +25,9 @@ const Landing = () => {
   const baseURL = process.env.REACT_APP_BASE_URL;
   const token = sessionStorage.getItem("JWTtoken");
 
+  //Spotlight Deal Function
+  //----------------------------
+
   const getSingleDeal = useCallback(async () => {
     try {
       const response = await axios.get(`${baseURL}/deals`, {

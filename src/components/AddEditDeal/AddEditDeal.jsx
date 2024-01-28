@@ -22,6 +22,9 @@ const AddEditDeal = () => {
     company_id: "",
   });
 
+  //Form Validation
+  //----------------------------
+
   const isFormValid = () => {
     if (
       !formData.deal_name ||
@@ -37,7 +40,8 @@ const AddEditDeal = () => {
     }
   };
 
-  //Handle form data
+  //Handle Form Data
+  //----------------------------
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -91,6 +95,9 @@ const AddEditDeal = () => {
     }
   };
 
+  //Get Specific Deal Information
+  //----------------------------
+
   useEffect(() => {
     const getformData = async () => {
       const response = await axios.get(`${baseURL}/deals/${dealId}`, {
@@ -123,7 +130,8 @@ const AddEditDeal = () => {
     </div>
   );
 
-  //Get list of companies
+  //Get List of Companies
+  //----------------------------
 
   const getCompanyList = useCallback(async () => {
     try {

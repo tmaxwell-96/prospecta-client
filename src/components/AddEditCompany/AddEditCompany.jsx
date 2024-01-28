@@ -7,6 +7,7 @@ const AddEditCompany = () => {
   const token = sessionStorage.getItem("JWTtoken");
   const baseURL = process.env.REACT_APP_BASE_URL;
   const navigate = useNavigate();
+
   //Check if editmode
   const { companyId } = useParams();
   const isEditMode = !!companyId;
@@ -22,6 +23,9 @@ const AddEditCompany = () => {
     contact_phone: "",
     contact_email: "",
   });
+
+  //Form Validation
+  //----------------------------
 
   const isFormValid = () => {
     if (
@@ -40,7 +44,8 @@ const AddEditCompany = () => {
     }
   };
 
-  //Handle form data
+  //Handle Form Data
+  //----------------------------
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -88,6 +93,7 @@ const AddEditCompany = () => {
   };
 
   //Get specific company details
+  //----------------------------
 
   useEffect(() => {
     const getformData = async () => {

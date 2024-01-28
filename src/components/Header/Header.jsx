@@ -6,6 +6,9 @@ import "./Header.scss";
 
 const Header = ({ setIsLoggedIn }) => {
   const navigate = useNavigate();
+
+  //Logout Function
+  //----------------------------
   const handleLogout = () => {
     sessionStorage.clear();
     setIsLoggedIn(false);

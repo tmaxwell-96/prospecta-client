@@ -13,6 +13,9 @@ const Signup = () => {
     password: "",
   });
 
+  //Form Validation
+  //----------------------------
+
   const isFormValid = () => {
     if (!formData.username || !formData.name || !formData.password) {
       return false;
@@ -37,6 +40,9 @@ const Signup = () => {
   );
 
   const navigate = useNavigate();
+
+  //Signup Function
+  //----------------------------
 
   const handleSignup = async (event) => {
     event.preventDefault();

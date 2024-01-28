@@ -26,6 +26,9 @@ function NavigationComponent({
   const baseURL = process.env.REACT_APP_BASE_URL;
   const navigate = useNavigate();
 
+  //Login Function
+  //----------------------------
+
   const handleLogin = async (event) => {
     event.preventDefault();
 
@@ -47,6 +50,9 @@ function NavigationComponent({
     }
     setSubmitted(false);
   };
+
+  //Check Login on Page Refresh
+  //----------------------------
 
   useEffect(() => {
     const checkLogin = () => {

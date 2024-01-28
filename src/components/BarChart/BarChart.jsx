@@ -52,7 +52,8 @@ function BarChart({ chartData }) {
     },
   };
 
-  // Set the height of the chart directly
+  //Directly Set Height of Chart
+  //----------------------------
   const chartHeight = 400;
 
   return (
