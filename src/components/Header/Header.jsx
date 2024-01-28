@@ -10,7 +10,7 @@ const Header = ({ setIsLoggedIn }) => {
   //Logout Function
   //----------------------------
   const handleLogout = () => {
-    sessionStorage.clear();
+    sessionStorage.removeItem("JWTtoken");
     setIsLoggedIn(false);
     navigate("/");
   };

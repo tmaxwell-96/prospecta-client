@@ -42,13 +42,13 @@ function NavigationComponent({
 
       sessionStorage.setItem("JWTtoken", response.data.token);
       setIsLoggedIn(true);
+      setErrorMessage(""); // Reset error message on successful login
       navigate("/home");
-    } catch (error) {
       setSubmitted(false);
+    } catch (error) {
       setIsLoggedIn(false);
       setErrorMessage("Username or password not recognized");
     }
-    setSubmitted(false);
   };
 
   //Check Login on Page Refresh
@@ -61,10 +61,11 @@ function NavigationComponent({
         setIsLoggedIn(true);
       } else {
         setIsLoggedIn(false);
+        setErrorMessage("Session expired. Please log in again.");
       }
     };
     checkLogin();
-  }, [setIsLoggedIn]);
+  }, [setIsLoggedIn, setErrorMessage]);
 
   return (
     <div className="app__content">

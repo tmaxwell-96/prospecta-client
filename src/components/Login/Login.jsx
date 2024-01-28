@@ -28,7 +28,7 @@ const Login = ({ handleLogin, submitted, errorMessage }) => {
             />
           </div>
           <button className="login-form__button" type="submit">
-            {submitted ? "Logging in..." : "Login"}
+            Login
           </button>
         </form>
       </div>
