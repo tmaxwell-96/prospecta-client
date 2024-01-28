@@ -39,6 +39,15 @@ const Login = ({ handleLogin, submitted, errorMessage }) => {
           <button className="login-form__button"> Sign Up</button>
         </Link>
       </div>
+      <div className="login__demo-user">
+        <h2 className="login__heading-text">To demo project, login with:</h2>
+        <p className="login__text">
+          <span className="login__highlight">Username:</span> demo
+        </p>
+        <p className="login__text">
+          <span className="login__highlight">Password:</span> demo
+        </p>
+      </div>
       {errorMessage && isSubmitted && (
         <p className="error-message">{errorMessage}</p>
       )}
