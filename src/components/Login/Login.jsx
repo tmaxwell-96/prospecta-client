@@ -42,7 +42,7 @@ const Login = ({ handleLogin, submitted, errorMessage }) => {
       <div className="login__demo-user">
         <h2 className="login__heading-text">To demo project, login with:</h2>
         <p className="login__text">
-          <span className="login__highlight">Username:</span> demo
+          <span className="login__highlight">Username:</span> demoUser
         </p>
         <p className="login__text">
           <span className="login__highlight">Password:</span> demo
