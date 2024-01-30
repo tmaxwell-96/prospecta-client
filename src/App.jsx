@@ -61,7 +61,6 @@ function NavigationComponent({
         setIsLoggedIn(true);
       } else {
         setIsLoggedIn(false);
-        setErrorMessage("Session expired. Please log in again.");
       }
     };
     checkLogin();
